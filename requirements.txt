@@ -1,0 +1,115 @@
+# Data Visualization Comprehensive Tutorial - Requirements
+# Author: Based on DATAVIZ_TUTORIAL_MASTER_PLAN.md
+# Python 3.10+ required
+
+# Core Data Analysis Libraries
+pandas>=1.5.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Core Visualization Libraries
+matplotlib>=3.6.0
+seaborn>=0.12.0
+plotly>=5.11.0
+altair>=4.2.0
+bokeh>=2.4.0
+
+# Geospatial Visualization
+geopandas>=0.12.0
+contextily>=1.2.0
+folium>=0.14.0
+leafmap>=0.9.0
+pydeck>=0.8.0
+shapely>=2.0.0
+fiona>=1.9.0
+
+# Raster and Satellite Data
+rasterio>=1.3.0
+rioxarray>=0.13.0
+xarray>=2023.1.0
+
+# Big Data Visualization
+datashader>=0.14.0
+holoviews>=1.15.0
+hvplot>=0.8.0
+dask>=2023.1.0
+
+# Interactive Maps and 3D
+keplergl>=0.3.2
+pyvista>=0.42.0
+mayavi>=4.8.0
+
+# Dashboard and Web Applications
+streamlit>=1.15.0
+panel>=0.14.0
+dash>=2.10.0
+voila>=0.4.0
+
+# Jupyter and Notebook Tools
+jupyterlab>=3.5.0
+notebook>=6.5.0
+ipywidgets>=8.0.0
+papermill>=2.4.0
+
+# Network Analysis and Graphs
+networkx>=3.1.0
+igraph>=0.10.0
+pyvis>=0.3.0
+
+# Statistical and Machine Learning
+scikit-learn>=1.3.0
+statsmodels>=0.14.0
+
+# Color and Accessibility
+colorspacious>=1.1.2
+colour>=0.1.5
+
+# File I/O and Data Formats
+openpyxl>=3.1.0
+xlrd>=2.0.0
+pyarrow>=12.0.0
+h5py>=3.8.0
+
+# Web Scraping and APIs
+requests>=2.28.0
+beautifulsoup4>=4.12.0
+
+# Image Processing
+Pillow>=9.5.0
+imageio>=2.28.0
+
+# Development and Testing
+pytest>=7.2.0
+black>=23.1.0
+flake8>=6.0.0
+
+# Optional: Specialized Omics Libraries (Advanced Track)
+# Uncomment if pursuing the omics visualization modules
+# biopython>=1.81
+# pysam>=0.21.0
+# pybedtools>=0.9.0
+# cooltools>=0.5.0
+# cooler>=0.9.0
+# pyGenomeTracks>=3.8
+
+# Optional: Deep Learning Model Interpretability (Advanced Track)
+# Uncomment if pursuing ML interpretability modules
+# torch>=2.0.0
+# tensorflow>=2.12.0
+# shap>=0.41.0
+# captum>=0.6.0
+# lime>=0.2.0
+
+# Performance and Utilities
+tqdm>=4.65.0
+joblib>=1.2.0
+numba>=0.57.0
+
+# Documentation and Reporting
+sphinx>=6.1.0
+nbsphinx>=0.9.0
+myst-parser>=1.0.0
+
+# Environment and Configuration
+python-dotenv>=1.0.0
+pyyaml>=6.0
