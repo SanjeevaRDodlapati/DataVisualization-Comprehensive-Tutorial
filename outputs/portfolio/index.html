@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Visualization Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            padding: 60px 0;
+        }
+        
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .portfolio-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .card-icon {
+            font-size: 2.5em;
+            margin-right: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.8em;
+            color: #2c3e50;
+        }
+        
+        .card-description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .card-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        
+        .card-features li {
+            padding: 5px 0;
+            color: #34495e;
+        }
+        
+        .card-features li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .skills-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .skill-category {
+            text-align: center;
+        }
+        
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #ecf0f1;
+            color: #2c3e50;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .github-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .github-link:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Data Visualization Portfolio</h1>
+            <p>Comprehensive showcase of advanced data visualization and analytics skills</p>
+        </header>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div class="card-title">Executive Business Intelligence</div>
+                </div>
+                <div class="card-description">
+                    Strategic dashboard for C-suite executives featuring comprehensive business performance analysis with interactive KPI monitoring and growth trend visualization.
+                </div>
+                <ul class="card-features">
+                    <li>Multi-dimensional KPI analysis</li>
+                    <li>Revenue performance tracking</li>
+                    <li>Customer acquisition metrics</li>
+                    <li>Marketing ROI optimization</li>
+                    <li>Executive summary tables</li>
+                </ul>
+                <a href="dashboards/executive_dashboard.html" class="btn">View Executive Dashboard</a>
+            </div>
+            
+            <div class="portfolio-card">
+                <div class="card-header">
+                    <div class="card-icon">🔬</div>
+                    <div class="card-title">Scientific Research Analysis</div>
+                </div>
+                <div class="card-description">
+                    Publication-quality climate research dashboard with statistical rigor, correlation analysis, and uncertainty quantification meeting academic standards.
+                </div>
+                <ul class="card-features">
+                    <li>Statistical significance testing</li>
+                    <li>Confidence interval visualization</li>
+                    <li>Multi-variate correlation analysis</li>
+                    <li>Time series trend decomposition</li>
+                    <li>Publication-ready figures</li>
+                </ul>
+                <a href="dashboards/scientific_analysis.html" class="btn">View Scientific Analysis</a>
+            </div>
+        </div>
+        
+        <div class="skills-section">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">🛠️ Technical Skills Demonstrated</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>📈 Visualization Libraries</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Altair</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>📊 Data Analysis</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">SciPy</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🎨 Design Principles</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Color Theory</span>
+                        <span class="skill-tag">Typography</span>
+                        <span class="skill-tag">Accessibility</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>📖 Storytelling</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Narrative Structure</span>
+                        <span class="skill-tag">Progressive Disclosure</span>
+                        <span class="skill-tag">Audience Targeting</span>
+                        <span class="skill-tag">Insight Communication</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Created as part of the comprehensive Data Visualization Tutorial</p>
+            <a href="https://github.com/SanjeevaRDodlapati/DataVisualization-Comprehensive-Tutorial" class="github-link">
+                🔗 View on GitHub
+            </a>
+        </footer>
+    </div>
+</body>
+</html>
