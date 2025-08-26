@@ -53,8 +53,8 @@ def download_gapminder_data():
     """Download Gapminder data for Module 1."""
     logger.info("Downloading Gapminder data...")
     
-    # Gapminder life expectancy, population, and GDP data
-    gapminder_url = "https://raw.githubusercontent.com/plotly/datasets/master/gapminder.csv"
+    # Gapminder life expectancy, population, and GDP data (working URL)
+    gapminder_url = "https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv"
     download_file(gapminder_url, DATA_DIR / "gapminder.csv", "Gapminder dataset")
 
 def download_palmer_penguins():
