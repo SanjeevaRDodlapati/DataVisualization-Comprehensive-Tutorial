@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_118827daff2b4305e3f9431ac458783d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_118827daff2b4305e3f9431ac458783d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_118827daff2b4305e3f9431ac458783d = L.map(
+                "map_118827daff2b4305e3f9431ac458783d",
+                {
+                    center: [7.211675197368624, -57.2149043651854],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 2,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0ca1d39f9f62c0e57b7fd8ce51a909e6 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0ca1d39f9f62c0e57b7fd8ce51a909e6.addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var choropleth_05741393f60f84153fd7a41782eae16b = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_4bc070457c25e24318b309bc1f61ea27_styler(feature) {
+            switch(feature.id) {
+                case "0": 
+                    return {"color": "black", "fillColor": "#bd0026", "fillOpacity": 0.7, "opacity": 0.2, "weight": 1};
+                case "1": case "5": case "7": 
+                    return {"color": "black", "fillColor": "#f03b20", "fillOpacity": 0.7, "opacity": 0.2, "weight": 1};
+                case "2": case "3": case "4": 
+                    return {"color": "black", "fillColor": "#ffffb2", "fillOpacity": 0.7, "opacity": 0.2, "weight": 1};
+                case "6": case "9": 
+                    return {"color": "black", "fillColor": "#fd8d3c", "fillOpacity": 0.7, "opacity": 0.2, "weight": 1};
+                default:
+                    return {"color": "black", "fillColor": "#fecc5c", "fillOpacity": 0.7, "opacity": 0.2, "weight": 1};
+            }
+        }
+
+        function geo_json_4bc070457c25e24318b309bc1f61ea27_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_4bc070457c25e24318b309bc1f61ea27 = L.geoJson(null, {
+                onEachFeature: geo_json_4bc070457c25e24318b309bc1f61ea27_onEachFeature,
+            
+                style: geo_json_4bc070457c25e24318b309bc1f61ea27_styler,
+            ...{
+}
+        });
+
+        function geo_json_4bc070457c25e24318b309bc1f61ea27_add (data) {
+            geo_json_4bc070457c25e24318b309bc1f61ea27
+                .addData(data);
+        }
+            geo_json_4bc070457c25e24318b309bc1f61ea27_add({"bbox": [-130.0, -55.0, 19.0, 70.0], "features": [{"bbox": [-100.0, 40.0, -70.0, 50.0], "geometry": {"coordinates": [[[-70.0, 40.0], [-70.0, 50.0], [-100.0, 50.0], [-100.0, 40.0], [-70.0, 40.0]]], "type": "Polygon"}, "id": "0", "properties": {"area_deg2": 300.0, "gdp_centered": 26000.0, "gdp_per_capita": 65000, "name": "United States", "pop_density_proxy": 1103333.3333333333, "population": 331000000, "region": "North America"}, "type": "Feature"}, {"bbox": [-130.0, 50.0, -70.0, 70.0], "geometry": {"coordinates": [[[-70.0, 50.0], [-70.0, 70.0], [-130.0, 70.0], [-130.0, 50.0], [-70.0, 50.0]]], "type": "Polygon"}, "id": "1", "properties": {"area_deg2": 1200.0, "gdp_centered": 13000.0, "gdp_per_capita": 52000, "name": "Canada", "pop_density_proxy": 31666.666666666668, "population": 38000000, "region": "North America"}, "type": "Feature"}, {"bbox": [-115.0, 15.0, -85.0, 35.0], "geometry": {"coordinates": [[[-85.0, 15.0], [-85.0, 35.0], [-115.0, 35.0], [-115.0, 15.0], [-85.0, 15.0]]], "type": "Polygon"}, "id": "2", "properties": {"area_deg2": 600.0, "gdp_centered": -27000.0, "gdp_per_capita": 12000, "name": "Mexico", "pop_density_proxy": 213333.33333333334, "population": 128000000, "region": "North America"}, "type": "Feature"}, {"bbox": [-75.0, -35.0, -35.0, 5.0], "geometry": {"coordinates": [[[-35.0, -35.0], [-35.0, 5.0], [-75.0, 5.0], [-75.0, -35.0], [-35.0, -35.0]]], "type": "Polygon"}, "id": "3", "properties": {"area_deg2": 1600.0, "gdp_centered": -28000.0, "gdp_per_capita": 11000, "name": "Brazil", "pop_density_proxy": 133125.0, "population": 213000000, "region": "South America"}, "type": "Feature"}, {"bbox": [-75.0, -55.0, -55.0, -20.0], "geometry": {"coordinates": [[[-55.0, -55.0], [-55.0, -20.0], [-75.0, -20.0], [-75.0, -55.0], [-55.0, -55.0]]], "type": "Polygon"}, "id": "4", "properties": {"area_deg2": 700.0, "gdp_centered": -26000.0, "gdp_per_capita": 13000, "name": "Argentina", "pop_density_proxy": 64285.71428571428, "population": 45000000, "region": "South America"}, "type": "Feature"}, {"bbox": [-8.0, 50.0, 2.0, 60.0], "geometry": {"coordinates": [[[2.0, 50.0], [2.0, 60.0], [-8.0, 60.0], [-8.0, 50.0], [2.0, 50.0]]], "type": "Polygon"}, "id": "5", "properties": {"area_deg2": 100.0, "gdp_centered": 6000.0, "gdp_per_capita": 45000, "name": "United Kingdom", "pop_density_proxy": 670000.0, "population": 67000000, "region": "Europe"}, "type": "Feature"}, {"bbox": [-5.0, 42.0, 8.0, 52.0], "geometry": {"coordinates": [[[8.0, 42.0], [8.0, 52.0], [-5.0, 52.0], [-5.0, 42.0], [8.0, 42.0]]], "type": "Polygon"}, "id": "6", "properties": {"area_deg2": 130.0, "gdp_centered": 4000.0, "gdp_per_capita": 43000, "name": "France", "pop_density_proxy": 515384.6153846154, "population": 67000000, "region": "Europe"}, "type": "Feature"}, {"bbox": [6.0, 47.0, 15.0, 55.0], "geometry": {"coordinates": [[[15.0, 47.0], [15.0, 55.0], [6.0, 55.0], [6.0, 47.0], [15.0, 47.0]]], "type": "Polygon"}, "id": "7", "properties": {"area_deg2": 72.0, "gdp_centered": 9000.0, "gdp_per_capita": 48000, "name": "Germany", "pop_density_proxy": 1152777.7777777778, "population": 83000000, "region": "Europe"}, "type": "Feature"}, {"bbox": [-10.0, 36.0, 4.0, 44.0], "geometry": {"coordinates": [[[4.0, 36.0], [4.0, 44.0], [-10.0, 44.0], [-10.0, 36.0], [4.0, 36.0]]], "type": "Polygon"}, "id": "8", "properties": {"area_deg2": 112.0, "gdp_centered": -9000.0, "gdp_per_capita": 30000, "name": "Spain", "pop_density_proxy": 419642.85714285716, "population": 47000000, "region": "Europe"}, "type": "Feature"}, {"bbox": [7.0, 36.0, 19.0, 47.0], "geometry": {"coordinates": [[[19.0, 36.0], [19.0, 47.0], [7.0, 47.0], [7.0, 36.0], [19.0, 36.0]]], "type": "Polygon"}, "id": "9", "properties": {"area_deg2": 132.0, "gdp_centered": -4000.0, "gdp_per_capita": 35000, "name": "Italy", "pop_density_proxy": 454545.45454545453, "population": 60000000, "region": "Europe"}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_4bc070457c25e24318b309bc1f61ea27.addTo(choropleth_05741393f60f84153fd7a41782eae16b);
+        
+    
+    var color_map_93fa6baec51e2ad2040aa2e9fee163fd = {};
+
+    
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.color = d3.scale.threshold()
+              .domain([11000.0, 11108.21643286573, 11216.432865731464, 11324.649298597195, 11432.865731462925, 11541.082164328658, 11649.298597194389, 11757.51503006012, 11865.73146292585, 11973.947895791584, 12082.164328657314, 12190.380761523047, 12298.597194388778, 12406.813627254509, 12515.03006012024, 12623.246492985973, 12731.462925851703, 12839.679358717434, 12947.895791583167, 13056.112224448898, 13164.328657314629, 13272.54509018036, 13380.761523046092, 13488.977955911823, 13597.194388777556, 13705.410821643287, 13813.627254509018, 13921.843687374749, 14030.060120240481, 14138.276553106212, 14246.492985971945, 14354.709418837676, 14462.925851703407, 14571.142284569138, 14679.35871743487, 14787.575150300601, 14895.791583166332, 15004.008016032065, 15112.224448897796, 15220.440881763527, 15328.657314629258, 15436.87374749499, 15545.090180360721, 15653.306613226454, 15761.523046092185, 15869.739478957916, 15977.955911823647, 16086.172344689377, 16194.38877755511, 16302.605210420843, 16410.821643286574, 16519.038076152305, 16627.254509018036, 16735.470941883766, 16843.687374749497, 16951.90380761523, 17060.120240480963, 17168.336673346694, 17276.553106212425, 17384.769539078156, 17492.98597194389, 17601.20240480962, 17709.418837675352, 17817.635270541083, 17925.851703406814, 18034.068136272545, 18142.284569138275, 18250.501002004006, 18358.71743486974, 18466.93386773547, 18575.150300601203, 18683.366733466934, 18791.583166332664, 18899.7995991984, 19008.01603206413, 19116.23246492986, 19224.44889779559, 19332.665330661323, 19440.881763527053, 19549.098196392784, 19657.314629258515, 19765.531062124246, 19873.74749498998, 19981.96392785571, 20090.180360721442, 20198.396793587177, 20306.613226452908, 20414.82965931864, 20523.04609218437, 20631.2625250501, 20739.47895791583, 20847.695390781562, 20955.911823647293, 21064.128256513024, 21172.344689378755, 21280.56112224449, 21388.77755511022, 21496.99398797595, 21605.210420841686, 21713.426853707417, 21821.643286573148, 21929.85971943888, 22038.07615230461, 22146.29258517034, 22254.50901803607, 22362.725450901802, 22470.941883767533, 22579.158316633264, 22687.374749499, 22795.59118236473, 22903.80761523046, 23012.024048096195, 23120.240480961926, 23228.456913827657, 23336.673346693387, 23444.88977955912, 23553.10621242485, 23661.32264529058, 23769.53907815631, 23877.755511022042, 23985.971943887776, 24094.188376753507, 24202.40480961924, 24310.62124248497, 24418.837675350704, 24527.054108216435, 24635.270541082165, 24743.486973947896, 24851.703406813627, 24959.919839679358, 25068.13627254509, 25176.35270541082, 25284.56913827655, 25392.785571142285, 25501.002004008016, 25609.218436873747, 25717.43486973948, 25825.651302605213, 25933.867735470943, 26042.084168336674, 26150.300601202405, 26258.517034068136, 26366.733466933867, 26474.949899799598, 26583.16633266533, 26691.38276553106, 26799.599198396794, 26907.815631262525, 27016.032064128256, 27124.24849699399, 27232.46492985972, 27340.681362725452, 27448.897795591183, 27557.114228456914, 27665.330661322645, 27773.547094188376, 27881.763527054107, 27989.97995991984, 28098.196392785572, 28206.412825651303, 28314.629258517034, 28422.845691382765, 28531.062124248496, 28639.278557114227, 28747.49498997996, 28855.711422845692, 28963.927855711423, 29072.144288577154, 29180.360721442885, 29288.577154308616, 29396.79358717435, 29505.01002004008, 29613.226452905812, 29721.442885771543, 29829.659318637274, 29937.875751503005, 30046.09218436874, 30154.30861723447, 30262.5250501002, 30370.741482965932, 30478.957915831663, 30587.174348697394, 30695.390781563125, 30803.60721442886, 30911.82364729459, 31020.04008016032, 31128.256513026052, 31236.472945891783, 31344.689378757514, 31452.905811623248, 31561.12224448898, 31669.33867735471, 31777.55511022044, 31885.77154308617, 31993.987975951903, 32102.204408817634, 32210.420841683368, 32318.6372745491, 32426.85370741483, 32535.07014028056, 32643.28657314629, 32751.503006012023, 32859.71943887776, 32967.93587174349, 33076.15230460922, 33184.36873747495, 33292.58517034068, 33400.80160320641, 33509.01803607214, 33617.23446893788, 33725.450901803604, 33833.66733466934, 33941.883767535066, 34050.100200400804, 34158.31663326653, 34266.533066132266, 34374.749498998, 34482.96593186373, 34591.18236472946, 34699.39879759519, 34807.61523046092, 34915.83166332665, 35024.04809619239, 35132.26452905811, 35240.48096192385, 35348.697394789575, 35456.91382765531, 35565.13026052104, 35673.346693386775, 35781.563126252506, 35889.77955911824, 35997.99599198397, 36106.2124248497, 36214.42885771543, 36322.64529058116, 36430.8617234469, 36539.07815631262, 36647.29458917836, 36755.511022044084, 36863.72745490982, 36971.94388777555, 37080.160320641284, 37188.376753507015, 37296.593186372746, 37404.80961923848, 37513.02605210421, 37621.24248496994, 37729.45891783567, 37837.67535070141, 37945.89178356713, 38054.10821643287, 38162.32464929859, 38270.54108216433, 38378.75751503006, 38486.97394789579, 38595.19038076152, 38703.406813627254, 38811.623246492985, 38919.839679358716, 39028.05611222445, 39136.27254509018, 39244.488977955916, 39352.70541082164, 39460.92184368738, 39569.1382765531, 39677.35470941884, 39785.57114228457, 39893.7875751503, 40002.00400801603, 40110.22044088176, 40218.436873747494, 40326.653306613225, 40434.86973947896, 40543.08617234469, 40651.302605210425, 40759.51903807615, 40867.73547094189, 40975.95190380761, 41084.16833667335, 41192.38476953908, 41300.60120240481, 41408.81763527054, 41517.03406813627, 41625.250501002, 41733.466933867734, 41841.68336673347, 41949.899799599196, 42058.116232464934, 42166.33266533066, 42274.549098196396, 42382.76553106212, 42490.98196392786, 42599.19839679359, 42707.41482965932, 42815.63126252505, 42923.84769539078, 43032.06412825651, 43140.28056112224, 43248.49699398798, 43356.713426853705, 43464.92985971944, 43573.14629258517, 43681.362725450905, 43789.579158316636, 43897.79559118237, 44006.0120240481, 44114.22845691383, 44222.44488977956, 44330.66132264529, 44438.87775551102, 44547.09418837675, 44655.31062124248, 44763.52705410821, 44871.743486973945, 44979.95991983968, 45088.17635270541, 45196.392785571144, 45304.609218436875, 45412.825651302606, 45521.04208416834, 45629.25851703407, 45737.4749498998, 45845.69138276553, 45953.90781563126, 46062.12424849699, 46170.34068136272, 46278.55711422845, 46386.77354709419, 46494.98997995992, 46603.20641282565, 46711.422845691384, 46819.639278557115, 46927.855711422846, 47036.07214428858, 47144.28857715431, 47252.50501002004, 47360.72144288577, 47468.9378757515, 47577.15430861723, 47685.37074148296, 47793.5871743487, 47901.80360721443, 48010.02004008016, 48118.23647294589, 48226.452905811624, 48334.669338677355, 48442.885771543086, 48551.10220440882, 48659.31863727455, 48767.53507014028, 48875.75150300601, 48983.96793587174, 49092.18436873748, 49200.40080160321, 49308.61723446894, 49416.83366733467, 49525.0501002004, 49633.26653306613, 49741.482965931864, 49849.699398797595, 49957.915831663326, 50066.13226452906, 50174.34869739479, 50282.56513026052, 50390.78156312625, 50498.99799599199, 50607.21442885772, 50715.43086172345, 50823.64729458918, 50931.86372745491, 51040.08016032064, 51148.29659318637, 51256.513026052104, 51364.729458917835, 51472.945891783565, 51581.162324649296, 51689.37875751503, 51797.59519038076, 51905.811623246496, 52014.02805611223, 52122.24448897796, 52230.46092184369, 52338.67735470942, 52446.89378757515, 52555.11022044088, 52663.32665330661, 52771.54308617234, 52879.759519038074, 52987.975951903805, 53096.192384769536, 53204.40881763527, 53312.625250501005, 53420.841683366736, 53529.05811623247, 53637.2745490982, 53745.49098196393, 53853.70741482966, 53961.92384769539, 54070.14028056112, 54178.35671342685, 54286.57314629258, 54394.789579158314, 54503.006012024045, 54611.222444889776, 54719.438877755514, 54827.655310621245, 54935.871743486976, 55044.08817635271, 55152.30460921844, 55260.52104208417, 55368.7374749499, 55476.95390781563, 55585.17034068136, 55693.38677354709, 55801.60320641282, 55909.819639278554, 56018.03607214429, 56126.25250501002, 56234.468937875754, 56342.685370741485, 56450.901803607216, 56559.11823647295, 56667.33466933868, 56775.55110220441, 56883.76753507014, 56991.98396793587, 57100.2004008016, 57208.41683366733, 57316.63326653306, 57424.8496993988, 57533.06613226453, 57641.28256513026, 57749.498997995994, 57857.715430861725, 57965.931863727455, 58074.14829659319, 58182.36472945892, 58290.58116232465, 58398.79759519038, 58507.01402805611, 58615.23046092184, 58723.44689378757, 58831.66332665331, 58939.87975951904, 59048.09619238477, 59156.3126252505, 59264.52905811623, 59372.745490981964, 59480.961923847695, 59589.178356713426, 59697.39478957916, 59805.61122244489, 59913.82765531062, 60022.04408817635, 60130.26052104208, 60238.47695390782, 60346.69338677355, 60454.90981963928, 60563.12625250501, 60671.34268537074, 60779.55911823647, 60887.775551102204, 60995.991983967935, 61104.208416833666, 61212.4248496994, 61320.64128256513, 61428.85771543086, 61537.07414829659, 61645.29058116233, 61753.50701402806, 61861.72344689379, 61969.93987975952, 62078.15631262525, 62186.37274549098, 62294.58917835671, 62402.805611222444, 62511.022044088175, 62619.238476953906, 62727.45490981964, 62835.67134268537, 62943.887775551106, 63052.10420841684, 63160.32064128257, 63268.5370741483, 63376.75350701403, 63484.96993987976, 63593.18637274549, 63701.40280561122, 63809.61923847695, 63917.835671342684, 64026.052104208415, 64134.268537074146, 64242.48496993988, 64350.701402805615, 64458.917835671346, 64567.13426853708, 64675.35070140281, 64783.56713426854, 64891.78356713427, 65000.0])
+              .range(['#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#ffffb2ff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fecc5cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#fd8d3cff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#f03b20ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff', '#bd0026ff']);
+    
+
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.x = d3.scale.linear()
+              .domain([11000.0, 65000.0])
+              .range([0, 450 - 50]);
+
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.legend = L.control({position: 'topright'});
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.legend.onAdd = function (map) {var div = L.DomUtil.create('div', 'legend'); return div};
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.legend.addTo(map_118827daff2b4305e3f9431ac458783d);
+
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.xAxis = d3.svg.axis()
+        .scale(color_map_93fa6baec51e2ad2040aa2e9fee163fd.x)
+        .orient("top")
+        .tickSize(1)
+        .tickValues([11000.0, 21800.0, 32600.0, 43400.0, 54200.0, 65000.0]);
+
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.svg = d3.select(".legend.leaflet-control").append("svg")
+        .attr("id", 'legend')
+        .attr("width", 450)
+        .attr("height", 40);
+
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.g = color_map_93fa6baec51e2ad2040aa2e9fee163fd.svg.append("g")
+        .attr("class", "key")
+        .attr("fill", "black")
+        .attr("transform", "translate(25,16)");
+
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.g.selectAll("rect")
+        .data(color_map_93fa6baec51e2ad2040aa2e9fee163fd.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_93fa6baec51e2ad2040aa2e9fee163fd.x(color_map_93fa6baec51e2ad2040aa2e9fee163fd.color.domain()[i - 1]) : color_map_93fa6baec51e2ad2040aa2e9fee163fd.x.range()[0],
+            x1: i < color_map_93fa6baec51e2ad2040aa2e9fee163fd.color.domain().length ? color_map_93fa6baec51e2ad2040aa2e9fee163fd.x(color_map_93fa6baec51e2ad2040aa2e9fee163fd.color.domain()[i]) : color_map_93fa6baec51e2ad2040aa2e9fee163fd.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append("rect")
+        .attr("height", 40 - 30)
+        .attr("x", function(d) { return d.x0; })
+        .attr("width", function(d) { return d.x1 - d.x0; })
+        .style("fill", function(d) { return d.z; });
+
+    color_map_93fa6baec51e2ad2040aa2e9fee163fd.g.call(color_map_93fa6baec51e2ad2040aa2e9fee163fd.xAxis).append("text")
+        .attr("class", "caption")
+        .attr("y", 21)
+        .attr("fill", "black")
+        .text("GDP per Capita (USD)");
+    
+            choropleth_05741393f60f84153fd7a41782eae16b.addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var marker_c526f66e3979a6b6015c9c401b516c7f = L.marker(
+                [45.0, -85.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_9b54729e8adb4236f9f1ed7ef253d6ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_494cc74bd609c106feb88d4553698ba4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3733efe38ff4c67a8e6f1c44694ba055 = $(`<div id="html_3733efe38ff4c67a8e6f1c44694ba055" style="width: 100.0%; height: 100.0%;">     <b>United States</b><br>     Population: 331,000,000<br>     GDP per Capita: $65,000<br>     Region: North America<br>     </div>`)[0];
+                popup_494cc74bd609c106feb88d4553698ba4.setContent(html_3733efe38ff4c67a8e6f1c44694ba055);
+            
+        
+
+        marker_c526f66e3979a6b6015c9c401b516c7f.bindPopup(popup_494cc74bd609c106feb88d4553698ba4)
+        ;
+
+        
+    
+    
+                marker_c526f66e3979a6b6015c9c401b516c7f.setIcon(icon_9b54729e8adb4236f9f1ed7ef253d6ab);
+            
+    
+            var marker_2a22c043da8c42307f84b76a0bc8ea0a = L.marker(
+                [60.0, -100.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_ad9b31071c075e3541fbbaf1ff0c6247 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d62fe5c5d48443641a470cb025a69aef = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ee6e1d63ec5c4ce57b5def31a89ba0bf = $(`<div id="html_ee6e1d63ec5c4ce57b5def31a89ba0bf" style="width: 100.0%; height: 100.0%;">     <b>Canada</b><br>     Population: 38,000,000<br>     GDP per Capita: $52,000<br>     Region: North America<br>     </div>`)[0];
+                popup_d62fe5c5d48443641a470cb025a69aef.setContent(html_ee6e1d63ec5c4ce57b5def31a89ba0bf);
+            
+        
+
+        marker_2a22c043da8c42307f84b76a0bc8ea0a.bindPopup(popup_d62fe5c5d48443641a470cb025a69aef)
+        ;
+
+        
+    
+    
+                marker_2a22c043da8c42307f84b76a0bc8ea0a.setIcon(icon_ad9b31071c075e3541fbbaf1ff0c6247);
+            
+    
+            var marker_ad419d363ce0ca3ef4ac1c5d16a2ea38 = L.marker(
+                [25.0, -100.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_608f790fa8ec80fb096d39031eb2e00d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55614ae8086a9083f6d1b14fa5579a53 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4e1a4464c0c41fa63ee42dbce0e2aec6 = $(`<div id="html_4e1a4464c0c41fa63ee42dbce0e2aec6" style="width: 100.0%; height: 100.0%;">     <b>Mexico</b><br>     Population: 128,000,000<br>     GDP per Capita: $12,000<br>     Region: North America<br>     </div>`)[0];
+                popup_55614ae8086a9083f6d1b14fa5579a53.setContent(html_4e1a4464c0c41fa63ee42dbce0e2aec6);
+            
+        
+
+        marker_ad419d363ce0ca3ef4ac1c5d16a2ea38.bindPopup(popup_55614ae8086a9083f6d1b14fa5579a53)
+        ;
+
+        
+    
+    
+                marker_ad419d363ce0ca3ef4ac1c5d16a2ea38.setIcon(icon_608f790fa8ec80fb096d39031eb2e00d);
+            
+    
+            var marker_3d8c6adc63e082f9e79d9cd5686506bb = L.marker(
+                [-15.0, -55.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_6c620ffc64ddbd55978a82e1be52844d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f8aba7db4b82b72a6e2bbae2c4b1bcc3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_927f60c0a0ec7ca731d3c859510f16ef = $(`<div id="html_927f60c0a0ec7ca731d3c859510f16ef" style="width: 100.0%; height: 100.0%;">     <b>Brazil</b><br>     Population: 213,000,000<br>     GDP per Capita: $11,000<br>     Region: South America<br>     </div>`)[0];
+                popup_f8aba7db4b82b72a6e2bbae2c4b1bcc3.setContent(html_927f60c0a0ec7ca731d3c859510f16ef);
+            
+        
+
+        marker_3d8c6adc63e082f9e79d9cd5686506bb.bindPopup(popup_f8aba7db4b82b72a6e2bbae2c4b1bcc3)
+        ;
+
+        
+    
+    
+                marker_3d8c6adc63e082f9e79d9cd5686506bb.setIcon(icon_6c620ffc64ddbd55978a82e1be52844d);
+            
+    
+            var marker_d129d86035c8667af5b1e7d4226b767f = L.marker(
+                [-37.5, -65.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_5ecbf9bf6c73e2a4dcdae1e26d2a98d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c3279cfb12875b23b1bc83c56f3db277 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2b369d6a6efaff5d1c1951b4968737c2 = $(`<div id="html_2b369d6a6efaff5d1c1951b4968737c2" style="width: 100.0%; height: 100.0%;">     <b>Argentina</b><br>     Population: 45,000,000<br>     GDP per Capita: $13,000<br>     Region: South America<br>     </div>`)[0];
+                popup_c3279cfb12875b23b1bc83c56f3db277.setContent(html_2b369d6a6efaff5d1c1951b4968737c2);
+            
+        
+
+        marker_d129d86035c8667af5b1e7d4226b767f.bindPopup(popup_c3279cfb12875b23b1bc83c56f3db277)
+        ;
+
+        
+    
+    
+                marker_d129d86035c8667af5b1e7d4226b767f.setIcon(icon_5ecbf9bf6c73e2a4dcdae1e26d2a98d8);
+            
+    
+            var marker_645110b17104a375f42ebdcb0785a97d = L.marker(
+                [55.0, -3.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_2fcc4d1219513cf2eb44bb0baa01096e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_efc47e84c69923e3ace7703c7eec67ae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_27950b224d50bc5a353597de61d05705 = $(`<div id="html_27950b224d50bc5a353597de61d05705" style="width: 100.0%; height: 100.0%;">     <b>United Kingdom</b><br>     Population: 67,000,000<br>     GDP per Capita: $45,000<br>     Region: Europe<br>     </div>`)[0];
+                popup_efc47e84c69923e3ace7703c7eec67ae.setContent(html_27950b224d50bc5a353597de61d05705);
+            
+        
+
+        marker_645110b17104a375f42ebdcb0785a97d.bindPopup(popup_efc47e84c69923e3ace7703c7eec67ae)
+        ;
+
+        
+    
+    
+                marker_645110b17104a375f42ebdcb0785a97d.setIcon(icon_2fcc4d1219513cf2eb44bb0baa01096e);
+            
+    
+            var marker_de85465c3e47b922e4db02d078992ebc = L.marker(
+                [47.0, 1.5],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_bf56c957ff94b9dac759c0e07bb22c58 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_800e0d982c495785819628a73b6b3d0b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_24c68d2e62c406eb54461b3de68a2293 = $(`<div id="html_24c68d2e62c406eb54461b3de68a2293" style="width: 100.0%; height: 100.0%;">     <b>France</b><br>     Population: 67,000,000<br>     GDP per Capita: $43,000<br>     Region: Europe<br>     </div>`)[0];
+                popup_800e0d982c495785819628a73b6b3d0b.setContent(html_24c68d2e62c406eb54461b3de68a2293);
+            
+        
+
+        marker_de85465c3e47b922e4db02d078992ebc.bindPopup(popup_800e0d982c495785819628a73b6b3d0b)
+        ;
+
+        
+    
+    
+                marker_de85465c3e47b922e4db02d078992ebc.setIcon(icon_bf56c957ff94b9dac759c0e07bb22c58);
+            
+    
+            var marker_21991b5ba2dbc39e886334586a218695 = L.marker(
+                [51.0, 10.5],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_436e38666f3d1fe4a6949a857b153fdf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5560ba82df35563dfb9d49c43791953e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_98af9b4449eb7cc5a125e5b4ca3e9b00 = $(`<div id="html_98af9b4449eb7cc5a125e5b4ca3e9b00" style="width: 100.0%; height: 100.0%;">     <b>Germany</b><br>     Population: 83,000,000<br>     GDP per Capita: $48,000<br>     Region: Europe<br>     </div>`)[0];
+                popup_5560ba82df35563dfb9d49c43791953e.setContent(html_98af9b4449eb7cc5a125e5b4ca3e9b00);
+            
+        
+
+        marker_21991b5ba2dbc39e886334586a218695.bindPopup(popup_5560ba82df35563dfb9d49c43791953e)
+        ;
+
+        
+    
+    
+                marker_21991b5ba2dbc39e886334586a218695.setIcon(icon_436e38666f3d1fe4a6949a857b153fdf);
+            
+    
+            var marker_9938ce667f211541cd6a39a996a5b10b = L.marker(
+                [40.0, -3.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_b36f0d083a61c8f84ee2322cd9964641 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_faabe37eed2f3688e33443ab7b6d7fb0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_de33dd52a5f1851311ff6b021146c157 = $(`<div id="html_de33dd52a5f1851311ff6b021146c157" style="width: 100.0%; height: 100.0%;">     <b>Spain</b><br>     Population: 47,000,000<br>     GDP per Capita: $30,000<br>     Region: Europe<br>     </div>`)[0];
+                popup_faabe37eed2f3688e33443ab7b6d7fb0.setContent(html_de33dd52a5f1851311ff6b021146c157);
+            
+        
+
+        marker_9938ce667f211541cd6a39a996a5b10b.bindPopup(popup_faabe37eed2f3688e33443ab7b6d7fb0)
+        ;
+
+        
+    
+    
+                marker_9938ce667f211541cd6a39a996a5b10b.setIcon(icon_b36f0d083a61c8f84ee2322cd9964641);
+            
+    
+            var marker_e9bdcea896079a1367c5fae1c8266ed2 = L.marker(
+                [41.5, 13.0],
+                {
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+        
+    
+            var icon_ce7764c894901a4beeb51d187a5ea367 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f1423b685e11c72c032763eeb78518cc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4b2843ef56a0ab24768c2f43c9c696b2 = $(`<div id="html_4b2843ef56a0ab24768c2f43c9c696b2" style="width: 100.0%; height: 100.0%;">     <b>Italy</b><br>     Population: 60,000,000<br>     GDP per Capita: $35,000<br>     Region: Europe<br>     </div>`)[0];
+                popup_f1423b685e11c72c032763eeb78518cc.setContent(html_4b2843ef56a0ab24768c2f43c9c696b2);
+            
+        
+
+        marker_e9bdcea896079a1367c5fae1c8266ed2.bindPopup(popup_f1423b685e11c72c032763eeb78518cc)
+        ;
+
+        
+    
+    
+                marker_e9bdcea896079a1367c5fae1c8266ed2.setIcon(icon_ce7764c894901a4beeb51d187a5ea367);
+            
+    
+            var layer_control_507e7f8115d20c1cee23a5d233110d05_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_0ca1d39f9f62c0e57b7fd8ce51a909e6,
+                },
+                overlays :  {
+                    "GDP per Capita" : choropleth_05741393f60f84153fd7a41782eae16b,
+                },
+            };
+            let layer_control_507e7f8115d20c1cee23a5d233110d05 = L.control.layers(
+                layer_control_507e7f8115d20c1cee23a5d233110d05_layers.base_layers,
+                layer_control_507e7f8115d20c1cee23a5d233110d05_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_118827daff2b4305e3f9431ac458783d);
+
+        
+</script>
+</html>
