@@ -1,0 +1,133 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>ML Model Comparison Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                .header { text-align: center; color: #2c3e50; }
+                .metric-table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+                .metric-table th, .metric-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+                .metric-table th { background-color: #f2f2f2; }
+                .best-score { background-color: #d4edda; font-weight: bold; }
+                .section { margin: 30px 0; }
+            </style>
+        </head>
+        <body>
+            <h1 class="header">ML Model Comparison Report</h1>
+            <p><strong>Generated:</strong> 2025-08-27 02:01:47</p>
+            <p><strong>Models Compared:</strong> 6</p>
+            
+            <div class="section">
+                <h2>Performance Summary</h2>
+                <table class="metric-table">
+                    <tr>
+                        <th>Model</th>
+                        <th>CV Mean</th>
+                        <th>CV Std</th>
+                        <th>Training Time (s)</th>
+                        <th>Prediction Time (s)</th>
+                        <th>Model Size (MB)</th>
+                    </tr>
+        
+                    <tr>
+                        <td>Logistic Regression</td>
+                        <td>0.9497</td>
+                        <td>0.0300</td>
+                        <td>0.1280</td>
+                        <td>0.0002</td>
+                        <td>0.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>0.9497</td>
+                        <td>0.0181</td>
+                        <td>0.1635</td>
+                        <td>0.0051</td>
+                        <td>0.29</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Gradient Boosting</td>
+                        <td>0.9548</td>
+                        <td>0.0204</td>
+                        <td>0.4419</td>
+                        <td>0.0007</td>
+                        <td>0.13</td>
+                    </tr>
+            
+                    <tr>
+                        <td>SVM</td>
+                        <td>0.8943</td>
+                        <td>0.0264</td>
+                        <td>0.0150</td>
+                        <td>0.0023</td>
+                        <td>0.03</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Naive Bayes</td>
+                        <td>0.9372</td>
+                        <td>0.0137</td>
+                        <td>0.0007</td>
+                        <td>0.0002</td>
+                        <td>0.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>K-Nearest Neighbors</td>
+                        <td>0.9145</td>
+                        <td>0.0218</td>
+                        <td>0.0004</td>
+                        <td>0.0006</td>
+                        <td>0.09</td>
+                    </tr>
+            
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>Recommendations</h2>
+                <table class="metric-table">
+                    <tr>
+                        <th>Criterion</th>
+                        <th>Recommended Model</th>
+                        <th>Reason</th>
+                    </tr>
+        
+                    <tr>
+                        <td>Best Performance</td>
+                        <td class="best-score">Gradient Boosting</td>
+                        <td>Highest CV score: 0.955</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Fastest Training</td>
+                        <td class="best-score">K-Nearest Neighbors</td>
+                        <td>Training time: 0.000s</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Fastest Prediction</td>
+                        <td class="best-score">Logistic Regression</td>
+                        <td>Prediction time: 0.0002s</td>
+                    </tr>
+            
+                    <tr>
+                        <td>Smallest Size</td>
+                        <td class="best-score">Logistic Regression</td>
+                        <td>Size: 0.00MB </td>
+                    </tr>
+            
+                    <tr>
+                        <td>Most Robust</td>
+                        <td class="best-score">Naive Bayes</td>
+                        <td>CV std: 0.0137</td>
+                    </tr>
+            
+                </table>
+            </div>
+        </body>
+        </html>
+        
