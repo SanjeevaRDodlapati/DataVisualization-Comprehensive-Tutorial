@@ -1,0 +1,3893 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_7e612d41bef4e1be01b4b82843ed6bb7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                bottom: 50px; left: 50px; width: 200px; height: 150px; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:14px; padding: 10px">
+    <h4>Dashboard Legend</h4>
+    <p><span style="color:red">●</span> Hospitals</p>
+    <p><span style="color:blue">●</span> Schools</p>
+    <p><span style="color:orange">●</span> Fire Stations</p>
+    <p><span style="color:darkblue">●</span> Police</p>
+    <p><span style="color:green">●</span> Parks</p>
+    <p>🔴 Sensor Alert &nbsp;&nbsp; 🟢 Sensor Normal</p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_7e612d41bef4e1be01b4b82843ed6bb7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_7e612d41bef4e1be01b4b82843ed6bb7 = L.map(
+                "map_7e612d41bef4e1be01b4b82843ed6bb7",
+                {
+                    center: [37.7749, -122.4194],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_664e54ca699a2f7f92c69de3ec57dbeb = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_664e54ca699a2f7f92c69de3ec57dbeb.addTo(map_7e612d41bef4e1be01b4b82843ed6bb7);
+        
+    
+            var tile_layer_04b572f53e47b54157a98153ae6972b7 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_04b572f53e47b54157a98153ae6972b7.addTo(map_7e612d41bef4e1be01b4b82843ed6bb7);
+        
+    
+            var tile_layer_e2639fed80a123e5c340d33d720dc61b = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_e2639fed80a123e5c340d33d720dc61b.addTo(map_7e612d41bef4e1be01b4b82843ed6bb7);
+        
+    
+            var feature_group_8c205b4cd08083b00dc40aa39868caed = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_a27163c126938fe2d4d13f51137452f2 = L.marker(
+                [37.66371198819531, -122.38750978153105],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_047ab530b219c536ede40ca4259d8ffb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fe207a74bdc9a7c6dd4f1eb3bd3e5ab4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a77d1de249a07fc999467bdce5e203e6 = $(`<div id="html_a77d1de249a07fc999467bdce5e203e6" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 1</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 264</p>             <p><strong>Utilization:</strong> 24.1%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 06:41</p>         </div>         </div>`)[0];
+                popup_fe207a74bdc9a7c6dd4f1eb3bd3e5ab4.setContent(html_a77d1de249a07fc999467bdce5e203e6);
+            
+        
+
+        marker_a27163c126938fe2d4d13f51137452f2.bindPopup(popup_fe207a74bdc9a7c6dd4f1eb3bd3e5ab4)
+        ;
+
+        
+    
+    
+            marker_a27163c126938fe2d4d13f51137452f2.bindTooltip(
+                `<div>
+                     Police Station 1 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a27163c126938fe2d4d13f51137452f2.setIcon(icon_047ab530b219c536ede40ca4259d8ffb);
+            
+    
+            var marker_7fa3d10c3bc8571480dfa3ed5272b42f = L.marker(
+                [37.932821281550744, -122.3426565270847],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_d96e3620afd54e6b6b1f2c350d8f963c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_99c7363625fcbd4844d02af09d9c34e9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4647f230a202a49eb5b5be7523698c99 = $(`<div id="html_4647f230a202a49eb5b5be7523698c99" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Park 2</h4>             <p><strong>Type:</strong> Park</p>             <p><strong>Capacity:</strong> 199</p>             <p><strong>Utilization:</strong> 23.9%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 06:41</p>         </div>         </div>`)[0];
+                popup_99c7363625fcbd4844d02af09d9c34e9.setContent(html_4647f230a202a49eb5b5be7523698c99);
+            
+        
+
+        marker_7fa3d10c3bc8571480dfa3ed5272b42f.bindPopup(popup_99c7363625fcbd4844d02af09d9c34e9)
+        ;
+
+        
+    
+    
+            marker_7fa3d10c3bc8571480dfa3ed5272b42f.bindTooltip(
+                `<div>
+                     Park 2 (Park)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7fa3d10c3bc8571480dfa3ed5272b42f.setIcon(icon_d96e3620afd54e6b6b1f2c350d8f963c);
+            
+    
+            var marker_eeb7961eed8fb29dbefa3039ac728d54 = L.marker(
+                [37.7771221826612, -122.46217929136033],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_419cfa46147d852fec17a6d03d91a314 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2817e46eec851055d51dd8d9dc7b2985 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3d65cdffe66865504679c15695814b15 = $(`<div id="html_3d65cdffe66865504679c15695814b15" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 3</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 219</p>             <p><strong>Utilization:</strong> 23.3%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 06:49</p>         </div>         </div>`)[0];
+                popup_2817e46eec851055d51dd8d9dc7b2985.setContent(html_3d65cdffe66865504679c15695814b15);
+            
+        
+
+        marker_eeb7961eed8fb29dbefa3039ac728d54.bindPopup(popup_2817e46eec851055d51dd8d9dc7b2985)
+        ;
+
+        
+    
+    
+            marker_eeb7961eed8fb29dbefa3039ac728d54.bindTooltip(
+                `<div>
+                     Police Station 3 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eeb7961eed8fb29dbefa3039ac728d54.setIcon(icon_419cfa46147d852fec17a6d03d91a314);
+            
+    
+            var marker_b10ab9c7fae5b1425e2bb5911effeb6e = L.marker(
+                [37.797107890156475, -122.4961976501943],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_b6f96f2054435c44bcc7120a3380f440 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_24bf348507e56b15a3027c45d354e301 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_27202281352ddf61214f40ff07f3af43 = $(`<div id="html_27202281352ddf61214f40ff07f3af43" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Shopping Center 4</h4>             <p><strong>Type:</strong> Shopping Center</p>             <p><strong>Capacity:</strong> 413</p>             <p><strong>Utilization:</strong> 56.0%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:08</p>         </div>         </div>`)[0];
+                popup_24bf348507e56b15a3027c45d354e301.setContent(html_27202281352ddf61214f40ff07f3af43);
+            
+        
+
+        marker_b10ab9c7fae5b1425e2bb5911effeb6e.bindPopup(popup_24bf348507e56b15a3027c45d354e301)
+        ;
+
+        
+    
+    
+            marker_b10ab9c7fae5b1425e2bb5911effeb6e.bindTooltip(
+                `<div>
+                     Shopping Center 4 (Shopping Center)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b10ab9c7fae5b1425e2bb5911effeb6e.setIcon(icon_b6f96f2054435c44bcc7120a3380f440);
+            
+    
+            var marker_4f9142de86430b1688a7dbd9e1fab046 = L.marker(
+                [37.81660111096632, -122.33615381428788],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_dfca5733d7aa070a3eb786c5ce65124a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5d578fa718745e291b8816e5c5e8b8e7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4e09406b692063036bb7f3aa6583a3b9 = $(`<div id="html_4e09406b692063036bb7f3aa6583a3b9" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 5</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 378</p>             <p><strong>Utilization:</strong> 24.6%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 07:01</p>         </div>         </div>`)[0];
+                popup_5d578fa718745e291b8816e5c5e8b8e7.setContent(html_4e09406b692063036bb7f3aa6583a3b9);
+            
+        
+
+        marker_4f9142de86430b1688a7dbd9e1fab046.bindPopup(popup_5d578fa718745e291b8816e5c5e8b8e7)
+        ;
+
+        
+    
+    
+            marker_4f9142de86430b1688a7dbd9e1fab046.bindTooltip(
+                `<div>
+                     Fire Station 5 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4f9142de86430b1688a7dbd9e1fab046.setIcon(icon_dfca5733d7aa070a3eb786c5ce65124a);
+            
+    
+            var marker_f5c5c4520e9fe272b03e67470f78fd92 = L.marker(
+                [37.71483613100812, -122.44856937497933],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_ef49d4f5c3bc8c7db919fcde07fd4ff3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5c0706b26f286e602073ac6986224a94 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_12d8c5c33f59d91dcea51e52896b040e = $(`<div id="html_12d8c5c33f59d91dcea51e52896b040e" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 6</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 389</p>             <p><strong>Utilization:</strong> 36.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:58</p>         </div>         </div>`)[0];
+                popup_5c0706b26f286e602073ac6986224a94.setContent(html_12d8c5c33f59d91dcea51e52896b040e);
+            
+        
+
+        marker_f5c5c4520e9fe272b03e67470f78fd92.bindPopup(popup_5c0706b26f286e602073ac6986224a94)
+        ;
+
+        
+    
+    
+            marker_f5c5c4520e9fe272b03e67470f78fd92.bindTooltip(
+                `<div>
+                     Hospital 6 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f5c5c4520e9fe272b03e67470f78fd92.setIcon(icon_ef49d4f5c3bc8c7db919fcde07fd4ff3);
+            
+    
+            var marker_cc3698376a7622b4f4dfaa8283b328bf = L.marker(
+                [37.72153511961575, -122.419952786232],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_77e6013cc7e8de5575709be7aef74a21 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d9ad904561917718e94b38263b927078 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_93ef839fbbdd84a3c2f9dcb1a40c6c6c = $(`<div id="html_93ef839fbbdd84a3c2f9dcb1a40c6c6c" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 7</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 255</p>             <p><strong>Utilization:</strong> 47.4%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:15</p>         </div>         </div>`)[0];
+                popup_d9ad904561917718e94b38263b927078.setContent(html_93ef839fbbdd84a3c2f9dcb1a40c6c6c);
+            
+        
+
+        marker_cc3698376a7622b4f4dfaa8283b328bf.bindPopup(popup_d9ad904561917718e94b38263b927078)
+        ;
+
+        
+    
+    
+            marker_cc3698376a7622b4f4dfaa8283b328bf.bindTooltip(
+                `<div>
+                     Police Station 7 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cc3698376a7622b4f4dfaa8283b328bf.setIcon(icon_77e6013cc7e8de5575709be7aef74a21);
+            
+    
+            var marker_533649dcba33a20d70e5f3307970cb00 = L.marker(
+                [37.795786359500475, -122.61536701238798],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_f82d164af6a08ac278f1111def2e61b8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_904c601f0450c883ff8f8dd79a1a027d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_69ce828b737a434dfc52d7b8b445a477 = $(`<div id="html_69ce828b737a434dfc52d7b8b445a477" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 8</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 155</p>             <p><strong>Utilization:</strong> 59.7%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:36</p>         </div>         </div>`)[0];
+                popup_904c601f0450c883ff8f8dd79a1a027d.setContent(html_69ce828b737a434dfc52d7b8b445a477);
+            
+        
+
+        marker_533649dcba33a20d70e5f3307970cb00.bindPopup(popup_904c601f0450c883ff8f8dd79a1a027d)
+        ;
+
+        
+    
+    
+            marker_533649dcba33a20d70e5f3307970cb00.bindTooltip(
+                `<div>
+                     Police Station 8 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_533649dcba33a20d70e5f3307970cb00.setIcon(icon_f82d164af6a08ac278f1111def2e61b8);
+            
+    
+            var marker_6d30803bc26253250946bf987c4ebc16 = L.marker(
+                [37.79676383160539, -122.33122389610513],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_1942bc2f880b6e80dc48f3225ea3b463 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_922ce2df64bfb872811d456cccdada6c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f4e992147bd7ae0e27ff7299493c09ee = $(`<div id="html_f4e992147bd7ae0e27ff7299493c09ee" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>School 9</h4>             <p><strong>Type:</strong> School</p>             <p><strong>Capacity:</strong> 353</p>             <p><strong>Utilization:</strong> 42.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:51</p>         </div>         </div>`)[0];
+                popup_922ce2df64bfb872811d456cccdada6c.setContent(html_f4e992147bd7ae0e27ff7299493c09ee);
+            
+        
+
+        marker_6d30803bc26253250946bf987c4ebc16.bindPopup(popup_922ce2df64bfb872811d456cccdada6c)
+        ;
+
+        
+    
+    
+            marker_6d30803bc26253250946bf987c4ebc16.bindTooltip(
+                `<div>
+                     School 9 (School)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6d30803bc26253250946bf987c4ebc16.setIcon(icon_1942bc2f880b6e80dc48f3225ea3b463);
+            
+    
+            var marker_7acb9ce45cb3942a24d0bdbadea90201 = L.marker(
+                [37.76333517176118, -122.44951036955892],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_b8db6374e7ab406bf471926a410c1ff6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db3cc0856412b44e894ff31a16ca771b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_be67987a63d9526f509232417a3457c3 = $(`<div id="html_be67987a63d9526f509232417a3457c3" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 10</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 257</p>             <p><strong>Utilization:</strong> 72.3%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:18</p>         </div>         </div>`)[0];
+                popup_db3cc0856412b44e894ff31a16ca771b.setContent(html_be67987a63d9526f509232417a3457c3);
+            
+        
+
+        marker_7acb9ce45cb3942a24d0bdbadea90201.bindPopup(popup_db3cc0856412b44e894ff31a16ca771b)
+        ;
+
+        
+    
+    
+            marker_7acb9ce45cb3942a24d0bdbadea90201.bindTooltip(
+                `<div>
+                     Police Station 10 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7acb9ce45cb3942a24d0bdbadea90201.setIcon(icon_b8db6374e7ab406bf471926a410c1ff6);
+            
+    
+            var marker_fc114f9f7b5c687af1fa5d4425fff8c0 = L.marker(
+                [37.82098163001486, -122.41080765283691],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_d992a667932349b627bda505856964dd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_800c8b7bee25bd8ab2dd13cea6fdf186 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_12dddd488aa5c528c37b2907dabfea88 = $(`<div id="html_12dddd488aa5c528c37b2907dabfea88" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Park 11</h4>             <p><strong>Type:</strong> Park</p>             <p><strong>Capacity:</strong> 237</p>             <p><strong>Utilization:</strong> 58.0%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:24</p>         </div>         </div>`)[0];
+                popup_800c8b7bee25bd8ab2dd13cea6fdf186.setContent(html_12dddd488aa5c528c37b2907dabfea88);
+            
+        
+
+        marker_fc114f9f7b5c687af1fa5d4425fff8c0.bindPopup(popup_800c8b7bee25bd8ab2dd13cea6fdf186)
+        ;
+
+        
+    
+    
+            marker_fc114f9f7b5c687af1fa5d4425fff8c0.bindTooltip(
+                `<div>
+                     Park 11 (Park)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc114f9f7b5c687af1fa5d4425fff8c0.setIcon(icon_d992a667932349b627bda505856964dd);
+            
+    
+            var marker_60486f7b3a6b4ac71b07046531639493 = L.marker(
+                [37.83311227947131, -122.33062515404066],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_2738f0ce6215409bed2d8adf1ae83af2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52cccce2769702ac73f6f9552670f377 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0277a3deaaeb3ec0b318c02edbaeb4a4 = $(`<div id="html_0277a3deaaeb3ec0b318c02edbaeb4a4" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Park 12</h4>             <p><strong>Type:</strong> Park</p>             <p><strong>Capacity:</strong> 212</p>             <p><strong>Utilization:</strong> 75.3%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:06</p>         </div>         </div>`)[0];
+                popup_52cccce2769702ac73f6f9552670f377.setContent(html_0277a3deaaeb3ec0b318c02edbaeb4a4);
+            
+        
+
+        marker_60486f7b3a6b4ac71b07046531639493.bindPopup(popup_52cccce2769702ac73f6f9552670f377)
+        ;
+
+        
+    
+    
+            marker_60486f7b3a6b4ac71b07046531639493.bindTooltip(
+                `<div>
+                     Park 12 (Park)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_60486f7b3a6b4ac71b07046531639493.setIcon(icon_2738f0ce6215409bed2d8adf1ae83af2);
+            
+    
+            var marker_e9d362686f6ce10ae99151cf719c9159 = L.marker(
+                [37.7960587012326, -122.35969553538209],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_a0f7c1cc7a2f8d5c00d97b852cd22b7e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7d6f1116f7b2f3711d7b31c838cd287 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f775809b6714b9a465f723e8c0d38831 = $(`<div id="html_f775809b6714b9a465f723e8c0d38831" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Park 13</h4>             <p><strong>Type:</strong> Park</p>             <p><strong>Capacity:</strong> 77</p>             <p><strong>Utilization:</strong> 80.4%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:57</p>         </div>         </div>`)[0];
+                popup_d7d6f1116f7b2f3711d7b31c838cd287.setContent(html_f775809b6714b9a465f723e8c0d38831);
+            
+        
+
+        marker_e9d362686f6ce10ae99151cf719c9159.bindPopup(popup_d7d6f1116f7b2f3711d7b31c838cd287)
+        ;
+
+        
+    
+    
+            marker_e9d362686f6ce10ae99151cf719c9159.bindTooltip(
+                `<div>
+                     Park 13 (Park)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e9d362686f6ce10ae99151cf719c9159.setIcon(icon_a0f7c1cc7a2f8d5c00d97b852cd22b7e);
+            
+    
+            var marker_f9ff8bb199f36fe62b529a2de94e4f48 = L.marker(
+                [37.72698257621548, -122.43796589766637],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_e2abe23dfd6b068a95251c6e88c96821 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5f5985a419c691627236d77938002607 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2db2146661618258662306e47dbe384a = $(`<div id="html_2db2146661618258662306e47dbe384a" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 14</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 456</p>             <p><strong>Utilization:</strong> 66.8%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:28</p>         </div>         </div>`)[0];
+                popup_5f5985a419c691627236d77938002607.setContent(html_2db2146661618258662306e47dbe384a);
+            
+        
+
+        marker_f9ff8bb199f36fe62b529a2de94e4f48.bindPopup(popup_5f5985a419c691627236d77938002607)
+        ;
+
+        
+    
+    
+            marker_f9ff8bb199f36fe62b529a2de94e4f48.bindTooltip(
+                `<div>
+                     Police Station 14 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f9ff8bb199f36fe62b529a2de94e4f48.setIcon(icon_e2abe23dfd6b068a95251c6e88c96821);
+            
+    
+            var marker_6c6b916869fce091ad3932c896bdf1a2 = L.marker(
+                [37.617484471305595, -122.35560470567751],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_065ffd0ca7795b836ec3fd20369f96eb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4c2017136833ebb492923b249d1fbae7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6903e63068474ecde7fe84a54547e1e9 = $(`<div id="html_6903e63068474ecde7fe84a54547e1e9" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 15</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 84</p>             <p><strong>Utilization:</strong> 53.1%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:28</p>         </div>         </div>`)[0];
+                popup_4c2017136833ebb492923b249d1fbae7.setContent(html_6903e63068474ecde7fe84a54547e1e9);
+            
+        
+
+        marker_6c6b916869fce091ad3932c896bdf1a2.bindPopup(popup_4c2017136833ebb492923b249d1fbae7)
+        ;
+
+        
+    
+    
+            marker_6c6b916869fce091ad3932c896bdf1a2.bindTooltip(
+                `<div>
+                     Fire Station 15 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6c6b916869fce091ad3932c896bdf1a2.setIcon(icon_065ffd0ca7795b836ec3fd20369f96eb);
+            
+    
+            var marker_cb3562d5ce09a5f9bf844f5128c886ae = L.marker(
+                [37.82167947532632, -122.34578776493306],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_a97631170948f7fd541c35b9734229a5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_67580dce3e95b65e248aabb8ed8617cc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9893a39e02cdac1d11740e2f35419e95 = $(`<div id="html_9893a39e02cdac1d11740e2f35419e95" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Shopping Center 16</h4>             <p><strong>Type:</strong> Shopping Center</p>             <p><strong>Capacity:</strong> 304</p>             <p><strong>Utilization:</strong> 37.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:38</p>         </div>         </div>`)[0];
+                popup_67580dce3e95b65e248aabb8ed8617cc.setContent(html_9893a39e02cdac1d11740e2f35419e95);
+            
+        
+
+        marker_cb3562d5ce09a5f9bf844f5128c886ae.bindPopup(popup_67580dce3e95b65e248aabb8ed8617cc)
+        ;
+
+        
+    
+    
+            marker_cb3562d5ce09a5f9bf844f5128c886ae.bindTooltip(
+                `<div>
+                     Shopping Center 16 (Shopping Center)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cb3562d5ce09a5f9bf844f5128c886ae.setIcon(icon_a97631170948f7fd541c35b9734229a5);
+            
+    
+            var marker_28e066b920ed598e433c2fff73c4cab2 = L.marker(
+                [37.71341242405827, -122.38611075595111],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_6af9ed411fa36ea172ec2bdf14322d22 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c8c139c873297e8091b15bc9edd87db2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f1926fd4590f25fc78179eec9abef087 = $(`<div id="html_f1926fd4590f25fc78179eec9abef087" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 17</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 429</p>             <p><strong>Utilization:</strong> 27.6%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 06:33</p>         </div>         </div>`)[0];
+                popup_c8c139c873297e8091b15bc9edd87db2.setContent(html_f1926fd4590f25fc78179eec9abef087);
+            
+        
+
+        marker_28e066b920ed598e433c2fff73c4cab2.bindPopup(popup_c8c139c873297e8091b15bc9edd87db2)
+        ;
+
+        
+    
+    
+            marker_28e066b920ed598e433c2fff73c4cab2.bindTooltip(
+                `<div>
+                     Hospital 17 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_28e066b920ed598e433c2fff73c4cab2.setIcon(icon_6af9ed411fa36ea172ec2bdf14322d22);
+            
+    
+            var marker_4824d56a44c4215ce608ea837806b076 = L.marker(
+                [37.78407607765355, -122.61815689146009],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_d547f9d37fcb667ac92d1a6b53b12fb5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_544bc9cfea87922d322beb2291c03f48 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7a1fada4ccf89d1ea53ee7ab794106e8 = $(`<div id="html_7a1fada4ccf89d1ea53ee7ab794106e8" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 18</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 271</p>             <p><strong>Utilization:</strong> 29.8%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 06:26</p>         </div>         </div>`)[0];
+                popup_544bc9cfea87922d322beb2291c03f48.setContent(html_7a1fada4ccf89d1ea53ee7ab794106e8);
+            
+        
+
+        marker_4824d56a44c4215ce608ea837806b076.bindPopup(popup_544bc9cfea87922d322beb2291c03f48)
+        ;
+
+        
+    
+    
+            marker_4824d56a44c4215ce608ea837806b076.bindTooltip(
+                `<div>
+                     Hospital 18 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4824d56a44c4215ce608ea837806b076.setIcon(icon_d547f9d37fcb667ac92d1a6b53b12fb5);
+            
+    
+            var marker_a0fd46bcac528b86a7782437aac6ccef = L.marker(
+                [37.63304035369845, -122.40036630150348],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_4636bcd3db219adcc7b92f8037e7bd37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6706f8ad8547a563c8bafc3dc1792f4d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9c0051007a07785c7e5d11d757142af5 = $(`<div id="html_9c0051007a07785c7e5d11d757142af5" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Park 19</h4>             <p><strong>Type:</strong> Park</p>             <p><strong>Capacity:</strong> 62</p>             <p><strong>Utilization:</strong> 25.4%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 06:06</p>         </div>         </div>`)[0];
+                popup_6706f8ad8547a563c8bafc3dc1792f4d.setContent(html_9c0051007a07785c7e5d11d757142af5);
+            
+        
+
+        marker_a0fd46bcac528b86a7782437aac6ccef.bindPopup(popup_6706f8ad8547a563c8bafc3dc1792f4d)
+        ;
+
+        
+    
+    
+            marker_a0fd46bcac528b86a7782437aac6ccef.bindTooltip(
+                `<div>
+                     Park 19 (Park)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a0fd46bcac528b86a7782437aac6ccef.setIcon(icon_4636bcd3db219adcc7b92f8037e7bd37);
+            
+    
+            var marker_3748ba105051a669b61decd76b679bb3 = L.marker(
+                [37.82504483315248, -122.30358133470679],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_8cdff1dd12179d4df0f5a6d7c18be407 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a5330c833d017e14487fe3c4ba453c3c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b0ccbf8c1cc3f9fd9260bf3f525c9d05 = $(`<div id="html_b0ccbf8c1cc3f9fd9260bf3f525c9d05" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 20</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 183</p>             <p><strong>Utilization:</strong> 52.0%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:21</p>         </div>         </div>`)[0];
+                popup_a5330c833d017e14487fe3c4ba453c3c.setContent(html_b0ccbf8c1cc3f9fd9260bf3f525c9d05);
+            
+        
+
+        marker_3748ba105051a669b61decd76b679bb3.bindPopup(popup_a5330c833d017e14487fe3c4ba453c3c)
+        ;
+
+        
+    
+    
+            marker_3748ba105051a669b61decd76b679bb3.bindTooltip(
+                `<div>
+                     Fire Station 20 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3748ba105051a669b61decd76b679bb3.setIcon(icon_8cdff1dd12179d4df0f5a6d7c18be407);
+            
+    
+            var marker_c99fe9794a80711b7ef8022fc249b354 = L.marker(
+                [37.87116412899997, -122.44036924368369],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_fcb7bb0e4706090b511a2ef09a259be1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b77073a1b22aad55b43601dc0b874be8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c78e44092a5fbb5155eab3132402f06b = $(`<div id="html_c78e44092a5fbb5155eab3132402f06b" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 21</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 177</p>             <p><strong>Utilization:</strong> 76.5%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:37</p>         </div>         </div>`)[0];
+                popup_b77073a1b22aad55b43601dc0b874be8.setContent(html_c78e44092a5fbb5155eab3132402f06b);
+            
+        
+
+        marker_c99fe9794a80711b7ef8022fc249b354.bindPopup(popup_b77073a1b22aad55b43601dc0b874be8)
+        ;
+
+        
+    
+    
+            marker_c99fe9794a80711b7ef8022fc249b354.bindTooltip(
+                `<div>
+                     Police Station 21 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c99fe9794a80711b7ef8022fc249b354.setIcon(icon_fcb7bb0e4706090b511a2ef09a259be1);
+            
+    
+            var marker_0f2df565c9900e574d643d64ea5b5c51 = L.marker(
+                [37.704694690612264, -122.45216621465977],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_d0b6501cae54ea800f5dfef6f93642bf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b4571d4eecd597891c1165a4043a393c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fb04c3858094424d91811ebae51b196c = $(`<div id="html_fb04c3858094424d91811ebae51b196c" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 22</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 426</p>             <p><strong>Utilization:</strong> 65.3%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:08</p>         </div>         </div>`)[0];
+                popup_b4571d4eecd597891c1165a4043a393c.setContent(html_fb04c3858094424d91811ebae51b196c);
+            
+        
+
+        marker_0f2df565c9900e574d643d64ea5b5c51.bindPopup(popup_b4571d4eecd597891c1165a4043a393c)
+        ;
+
+        
+    
+    
+            marker_0f2df565c9900e574d643d64ea5b5c51.bindTooltip(
+                `<div>
+                     Hospital 22 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0f2df565c9900e574d643d64ea5b5c51.setIcon(icon_d0b6501cae54ea800f5dfef6f93642bf);
+            
+    
+            var marker_25eb9c0e6fd05bb415b5a2e107b14ba7 = L.marker(
+                [37.6399610026767, -122.52130727853681],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_085c177526ee3ff9482df50d22634e35 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_974f617f430b07ad1fa8cc7f1395ac50 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_086cfc73705fbb3605663dcf09ef9720 = $(`<div id="html_086cfc73705fbb3605663dcf09ef9720" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 23</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 247</p>             <p><strong>Utilization:</strong> 55.8%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:56</p>         </div>         </div>`)[0];
+                popup_974f617f430b07ad1fa8cc7f1395ac50.setContent(html_086cfc73705fbb3605663dcf09ef9720);
+            
+        
+
+        marker_25eb9c0e6fd05bb415b5a2e107b14ba7.bindPopup(popup_974f617f430b07ad1fa8cc7f1395ac50)
+        ;
+
+        
+    
+    
+            marker_25eb9c0e6fd05bb415b5a2e107b14ba7.bindTooltip(
+                `<div>
+                     Police Station 23 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_25eb9c0e6fd05bb415b5a2e107b14ba7.setIcon(icon_085c177526ee3ff9482df50d22634e35);
+            
+    
+            var marker_9f76c4090538e8313567eec5cce9bf56 = L.marker(
+                [37.735348354841975, -122.448313685647],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_dd7a92308b9e3d0c06ca395d26d06470 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8c723b47e63b834403888f70559da5e1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d9ed6a122f9f316fd1c1aab4619b7b54 = $(`<div id="html_d9ed6a122f9f316fd1c1aab4619b7b54" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Shopping Center 24</h4>             <p><strong>Type:</strong> Shopping Center</p>             <p><strong>Capacity:</strong> 221</p>             <p><strong>Utilization:</strong> 37.1%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:06</p>         </div>         </div>`)[0];
+                popup_8c723b47e63b834403888f70559da5e1.setContent(html_d9ed6a122f9f316fd1c1aab4619b7b54);
+            
+        
+
+        marker_9f76c4090538e8313567eec5cce9bf56.bindPopup(popup_8c723b47e63b834403888f70559da5e1)
+        ;
+
+        
+    
+    
+            marker_9f76c4090538e8313567eec5cce9bf56.bindTooltip(
+                `<div>
+                     Shopping Center 24 (Shopping Center)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9f76c4090538e8313567eec5cce9bf56.setIcon(icon_dd7a92308b9e3d0c06ca395d26d06470);
+            
+    
+            var marker_64156f32b08aee90191002aacf107950 = L.marker(
+                [37.80503228009496, -122.56525169209867],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_6ec0933d12b6b205e64596fc08af1245 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1907b4e23fbb6405731f4be20a573698 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6962470674472ced4fbbfff98e5a9b90 = $(`<div id="html_6962470674472ced4fbbfff98e5a9b90" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Shopping Center 25</h4>             <p><strong>Type:</strong> Shopping Center</p>             <p><strong>Capacity:</strong> 229</p>             <p><strong>Utilization:</strong> 45.5%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:16</p>         </div>         </div>`)[0];
+                popup_1907b4e23fbb6405731f4be20a573698.setContent(html_6962470674472ced4fbbfff98e5a9b90);
+            
+        
+
+        marker_64156f32b08aee90191002aacf107950.bindPopup(popup_1907b4e23fbb6405731f4be20a573698)
+        ;
+
+        
+    
+    
+            marker_64156f32b08aee90191002aacf107950.bindTooltip(
+                `<div>
+                     Shopping Center 25 (Shopping Center)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_64156f32b08aee90191002aacf107950.setIcon(icon_6ec0933d12b6b205e64596fc08af1245);
+            
+    
+            var marker_80327c2de15dd5f091933acabb245d08 = L.marker(
+                [37.583022878470096, -122.42205138754491],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_ab1583a1bf7a1476149d8194e5b16fdc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_88bbabe8277572bad564f9747f4f0372 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a0d7c09d968ebbb21f211775271adaec = $(`<div id="html_a0d7c09d968ebbb21f211775271adaec" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>School 26</h4>             <p><strong>Type:</strong> School</p>             <p><strong>Capacity:</strong> 162</p>             <p><strong>Utilization:</strong> 89.8%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:06</p>         </div>         </div>`)[0];
+                popup_88bbabe8277572bad564f9747f4f0372.setContent(html_a0d7c09d968ebbb21f211775271adaec);
+            
+        
+
+        marker_80327c2de15dd5f091933acabb245d08.bindPopup(popup_88bbabe8277572bad564f9747f4f0372)
+        ;
+
+        
+    
+    
+            marker_80327c2de15dd5f091933acabb245d08.bindTooltip(
+                `<div>
+                     School 26 (School)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_80327c2de15dd5f091933acabb245d08.setIcon(icon_ab1583a1bf7a1476149d8194e5b16fdc);
+            
+    
+            var marker_fb8bff415eb4609718a24c6e9bff8c4c = L.marker(
+                [37.768462194919906, -122.38490976649553],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_b545dfb8dcc21db7d3b658da6ba0ae6e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_076e1e317fee90528462e9ebb8246c31 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6fcd3d00bae27b478056a7483ab675a3 = $(`<div id="html_6fcd3d00bae27b478056a7483ab675a3" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 27</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 392</p>             <p><strong>Utilization:</strong> 39.5%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:32</p>         </div>         </div>`)[0];
+                popup_076e1e317fee90528462e9ebb8246c31.setContent(html_6fcd3d00bae27b478056a7483ab675a3);
+            
+        
+
+        marker_fb8bff415eb4609718a24c6e9bff8c4c.bindPopup(popup_076e1e317fee90528462e9ebb8246c31)
+        ;
+
+        
+    
+    
+            marker_fb8bff415eb4609718a24c6e9bff8c4c.bindTooltip(
+                `<div>
+                     Hospital 27 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fb8bff415eb4609718a24c6e9bff8c4c.setIcon(icon_b545dfb8dcc21db7d3b658da6ba0ae6e);
+            
+    
+            var marker_dff3d09c515c1d9b023ef7a3e6e46476 = L.marker(
+                [37.71742907923866, -122.46154982203399],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_5058c6a631f8e7e290b01debd3780e97 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c679a47b61dacde6210e29d50464507d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2ef234d9c542bd89ca2deb61288306ca = $(`<div id="html_2ef234d9c542bd89ca2deb61288306ca" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 28</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 221</p>             <p><strong>Utilization:</strong> 51.3%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:59</p>         </div>         </div>`)[0];
+                popup_c679a47b61dacde6210e29d50464507d.setContent(html_2ef234d9c542bd89ca2deb61288306ca);
+            
+        
+
+        marker_dff3d09c515c1d9b023ef7a3e6e46476.bindPopup(popup_c679a47b61dacde6210e29d50464507d)
+        ;
+
+        
+    
+    
+            marker_dff3d09c515c1d9b023ef7a3e6e46476.bindTooltip(
+                `<div>
+                     Hospital 28 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dff3d09c515c1d9b023ef7a3e6e46476.setIcon(icon_5058c6a631f8e7e290b01debd3780e97);
+            
+    
+            var marker_2937ab230d86836a0af7203f1a81a7db = L.marker(
+                [37.75346755167438, -122.48831942104643],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_45f4407698663d16bc23bf0b2f83c849 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a8847384bf4306db848caa864d44da7f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_84696ca06e51e85ca5c187470de8a78a = $(`<div id="html_84696ca06e51e85ca5c187470de8a78a" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 29</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 450</p>             <p><strong>Utilization:</strong> 71.0%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:41</p>         </div>         </div>`)[0];
+                popup_a8847384bf4306db848caa864d44da7f.setContent(html_84696ca06e51e85ca5c187470de8a78a);
+            
+        
+
+        marker_2937ab230d86836a0af7203f1a81a7db.bindPopup(popup_a8847384bf4306db848caa864d44da7f)
+        ;
+
+        
+    
+    
+            marker_2937ab230d86836a0af7203f1a81a7db.bindTooltip(
+                `<div>
+                     Police Station 29 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2937ab230d86836a0af7203f1a81a7db.setIcon(icon_45f4407698663d16bc23bf0b2f83c849);
+            
+    
+            var marker_249ce6fb08fa55a0fb956b59645d7e12 = L.marker(
+                [37.915420530587824, -122.28016742465081],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_377dea9df4b3abbba88adf1c98ba5099 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5b8c9a64e21e6286304d82065832d9d3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_c3788ff6eb935b175f2f75c751d19078 = $(`<div id="html_c3788ff6eb935b175f2f75c751d19078" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Park 30</h4>             <p><strong>Type:</strong> Park</p>             <p><strong>Capacity:</strong> 444</p>             <p><strong>Utilization:</strong> 77.2%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:49</p>         </div>         </div>`)[0];
+                popup_5b8c9a64e21e6286304d82065832d9d3.setContent(html_c3788ff6eb935b175f2f75c751d19078);
+            
+        
+
+        marker_249ce6fb08fa55a0fb956b59645d7e12.bindPopup(popup_5b8c9a64e21e6286304d82065832d9d3)
+        ;
+
+        
+    
+    
+            marker_249ce6fb08fa55a0fb956b59645d7e12.bindTooltip(
+                `<div>
+                     Park 30 (Park)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_249ce6fb08fa55a0fb956b59645d7e12.setIcon(icon_377dea9df4b3abbba88adf1c98ba5099);
+            
+    
+            var marker_9b8c1f7f8ab07dc5d02ddbbf06b3820c = L.marker(
+                [37.777709946334824, -122.53910870633382],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_2a87c0b8a78f3e300d414e068f7dbeec = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d4668cd7e9d36af572860b60c24992c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2ae839bb448d1a4b7090af93a6591b32 = $(`<div id="html_2ae839bb448d1a4b7090af93a6591b32" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 31</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 398</p>             <p><strong>Utilization:</strong> 80.1%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:06</p>         </div>         </div>`)[0];
+                popup_6d4668cd7e9d36af572860b60c24992c.setContent(html_2ae839bb448d1a4b7090af93a6591b32);
+            
+        
+
+        marker_9b8c1f7f8ab07dc5d02ddbbf06b3820c.bindPopup(popup_6d4668cd7e9d36af572860b60c24992c)
+        ;
+
+        
+    
+    
+            marker_9b8c1f7f8ab07dc5d02ddbbf06b3820c.bindTooltip(
+                `<div>
+                     Hospital 31 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9b8c1f7f8ab07dc5d02ddbbf06b3820c.setIcon(icon_2a87c0b8a78f3e300d414e068f7dbeec);
+            
+    
+            var marker_dff5c61628c913b294c671b340f56d0d = L.marker(
+                [37.775814434574016, -122.45595392968325],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_bfbb32e7fcb337a30907c0b1ac84bafb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f899b1cd682bb51088779b6112f4b271 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d80a5a8c085002280df0962588c796aa = $(`<div id="html_d80a5a8c085002280df0962588c796aa" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 32</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 196</p>             <p><strong>Utilization:</strong> 44.4%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:58</p>         </div>         </div>`)[0];
+                popup_f899b1cd682bb51088779b6112f4b271.setContent(html_d80a5a8c085002280df0962588c796aa);
+            
+        
+
+        marker_dff5c61628c913b294c671b340f56d0d.bindPopup(popup_f899b1cd682bb51088779b6112f4b271)
+        ;
+
+        
+    
+    
+            marker_dff5c61628c913b294c671b340f56d0d.bindTooltip(
+                `<div>
+                     Police Station 32 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dff5c61628c913b294c671b340f56d0d.setIcon(icon_bfbb32e7fcb337a30907c0b1ac84bafb);
+            
+    
+            var marker_2d4d07798b21ce3f0b5c7a805ff3ac0b = L.marker(
+                [37.76055377703693, -122.35769962242848],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_c3f0307d765a853df74057f5343465f7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0020846981b0e8444632b31acdb2be26 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3d54797a6b7c037943f2304c8236f96d = $(`<div id="html_3d54797a6b7c037943f2304c8236f96d" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 33</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 88</p>             <p><strong>Utilization:</strong> 85.6%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 07:04</p>         </div>         </div>`)[0];
+                popup_0020846981b0e8444632b31acdb2be26.setContent(html_3d54797a6b7c037943f2304c8236f96d);
+            
+        
+
+        marker_2d4d07798b21ce3f0b5c7a805ff3ac0b.bindPopup(popup_0020846981b0e8444632b31acdb2be26)
+        ;
+
+        
+    
+    
+            marker_2d4d07798b21ce3f0b5c7a805ff3ac0b.bindTooltip(
+                `<div>
+                     Police Station 33 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2d4d07798b21ce3f0b5c7a805ff3ac0b.setIcon(icon_c3f0307d765a853df74057f5343465f7);
+            
+    
+            var marker_5231bc4411197747dee711082697a729 = L.marker(
+                [37.69657467076638, -122.45160615162057],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_3286a1f0532ab62b410cbf85d7160a35 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e11b3b30a79005648a77eb1f5955c845 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a0c5ef881cc8918f5e7e2984c60ea6dd = $(`<div id="html_a0c5ef881cc8918f5e7e2984c60ea6dd" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 34</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 200</p>             <p><strong>Utilization:</strong> 57.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:23</p>         </div>         </div>`)[0];
+                popup_e11b3b30a79005648a77eb1f5955c845.setContent(html_a0c5ef881cc8918f5e7e2984c60ea6dd);
+            
+        
+
+        marker_5231bc4411197747dee711082697a729.bindPopup(popup_e11b3b30a79005648a77eb1f5955c845)
+        ;
+
+        
+    
+    
+            marker_5231bc4411197747dee711082697a729.bindTooltip(
+                `<div>
+                     Fire Station 34 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5231bc4411197747dee711082697a729.setIcon(icon_3286a1f0532ab62b410cbf85d7160a35);
+            
+    
+            var marker_3861f3f7edfe32f4b2e454445dcdb4d4 = L.marker(
+                [37.71233837047671, -122.47164614795325],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_20c6c35cc917cba052df52a5c2a5b0b7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_748afdb47f00647e572e77a25b54f629 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_224db3aa09bf0d35a54d68877db6a218 = $(`<div id="html_224db3aa09bf0d35a54d68877db6a218" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 35</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 161</p>             <p><strong>Utilization:</strong> 58.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:16</p>         </div>         </div>`)[0];
+                popup_748afdb47f00647e572e77a25b54f629.setContent(html_224db3aa09bf0d35a54d68877db6a218);
+            
+        
+
+        marker_3861f3f7edfe32f4b2e454445dcdb4d4.bindPopup(popup_748afdb47f00647e572e77a25b54f629)
+        ;
+
+        
+    
+    
+            marker_3861f3f7edfe32f4b2e454445dcdb4d4.bindTooltip(
+                `<div>
+                     Fire Station 35 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3861f3f7edfe32f4b2e454445dcdb4d4.setIcon(icon_20c6c35cc917cba052df52a5c2a5b0b7);
+            
+    
+            var marker_57d7ae6b06742898b28ccd15b1d8ca63 = L.marker(
+                [37.87494856077621, -122.40415791377407],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_80bc32b189b23beff3129232acbcca47 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0c173c7c15988877f968ef55a4e2b8c1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f15bd3aeed5b5052ac53ad7093f3776f = $(`<div id="html_f15bd3aeed5b5052ac53ad7093f3776f" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>School 36</h4>             <p><strong>Type:</strong> School</p>             <p><strong>Capacity:</strong> 58</p>             <p><strong>Utilization:</strong> 39.5%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:46</p>         </div>         </div>`)[0];
+                popup_0c173c7c15988877f968ef55a4e2b8c1.setContent(html_f15bd3aeed5b5052ac53ad7093f3776f);
+            
+        
+
+        marker_57d7ae6b06742898b28ccd15b1d8ca63.bindPopup(popup_0c173c7c15988877f968ef55a4e2b8c1)
+        ;
+
+        
+    
+    
+            marker_57d7ae6b06742898b28ccd15b1d8ca63.bindTooltip(
+                `<div>
+                     School 36 (School)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_57d7ae6b06742898b28ccd15b1d8ca63.setIcon(icon_80bc32b189b23beff3129232acbcca47);
+            
+    
+            var marker_2efbc21ba2627abe91c881b2535403b6 = L.marker(
+                [37.74635106990137, -122.3128707531154],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_181b72801eed40f6b5403dc5c11a9514 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_32f377d5f665548db600b3ef82fe5d04 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_89bec71d4a7fda921ec730b0872d74f8 = $(`<div id="html_89bec71d4a7fda921ec730b0872d74f8" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 37</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 210</p>             <p><strong>Utilization:</strong> 64.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:54</p>         </div>         </div>`)[0];
+                popup_32f377d5f665548db600b3ef82fe5d04.setContent(html_89bec71d4a7fda921ec730b0872d74f8);
+            
+        
+
+        marker_2efbc21ba2627abe91c881b2535403b6.bindPopup(popup_32f377d5f665548db600b3ef82fe5d04)
+        ;
+
+        
+    
+    
+            marker_2efbc21ba2627abe91c881b2535403b6.bindTooltip(
+                `<div>
+                     Fire Station 37 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2efbc21ba2627abe91c881b2535403b6.setIcon(icon_181b72801eed40f6b5403dc5c11a9514);
+            
+    
+            var marker_6483fffaa67ce7a4047d3672e0a28844 = L.marker(
+                [37.80420724732987, -122.49083514180263],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_f556a5157509f4c9d16748cdd1d65676 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3a34cc402e464d3998ad7154a234f3ae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_67ca33597ac021a5ba2d6d65535e6178 = $(`<div id="html_67ca33597ac021a5ba2d6d65535e6178" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 38</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 398</p>             <p><strong>Utilization:</strong> 39.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:19</p>         </div>         </div>`)[0];
+                popup_3a34cc402e464d3998ad7154a234f3ae.setContent(html_67ca33597ac021a5ba2d6d65535e6178);
+            
+        
+
+        marker_6483fffaa67ce7a4047d3672e0a28844.bindPopup(popup_3a34cc402e464d3998ad7154a234f3ae)
+        ;
+
+        
+    
+    
+            marker_6483fffaa67ce7a4047d3672e0a28844.bindTooltip(
+                `<div>
+                     Hospital 38 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6483fffaa67ce7a4047d3672e0a28844.setIcon(icon_f556a5157509f4c9d16748cdd1d65676);
+            
+    
+            var marker_c6c795f520d9d12743b1cd73661eae90 = L.marker(
+                [37.48695431065276, -122.49971776650126],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_8d58c73a1f083b540559712d858ae528 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_27f16f0a523d7a5c12b0ff44ff70c004 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b2b19a2573248550d3376bbd6e5c9ced = $(`<div id="html_b2b19a2573248550d3376bbd6e5c9ced" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>School 39</h4>             <p><strong>Type:</strong> School</p>             <p><strong>Capacity:</strong> 494</p>             <p><strong>Utilization:</strong> 35.7%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:32</p>         </div>         </div>`)[0];
+                popup_27f16f0a523d7a5c12b0ff44ff70c004.setContent(html_b2b19a2573248550d3376bbd6e5c9ced);
+            
+        
+
+        marker_c6c795f520d9d12743b1cd73661eae90.bindPopup(popup_27f16f0a523d7a5c12b0ff44ff70c004)
+        ;
+
+        
+    
+    
+            marker_c6c795f520d9d12743b1cd73661eae90.bindTooltip(
+                `<div>
+                     School 39 (School)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c6c795f520d9d12743b1cd73661eae90.setIcon(icon_8d58c73a1f083b540559712d858ae528);
+            
+    
+            var marker_858cc9c06ff5327566463f6a9d2f24af = L.marker(
+                [37.69978205753361, -122.53244280531204],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_3ede9ff597b603e7cedd5e1931e20d50 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eb8829658725708f65845a08bfcd75ed = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ec54abef97d4f11b1149d526b242f753 = $(`<div id="html_ec54abef97d4f11b1149d526b242f753" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 40</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 453</p>             <p><strong>Utilization:</strong> 45.7%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:57</p>         </div>         </div>`)[0];
+                popup_eb8829658725708f65845a08bfcd75ed.setContent(html_ec54abef97d4f11b1149d526b242f753);
+            
+        
+
+        marker_858cc9c06ff5327566463f6a9d2f24af.bindPopup(popup_eb8829658725708f65845a08bfcd75ed)
+        ;
+
+        
+    
+    
+            marker_858cc9c06ff5327566463f6a9d2f24af.bindTooltip(
+                `<div>
+                     Police Station 40 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_858cc9c06ff5327566463f6a9d2f24af.setIcon(icon_3ede9ff597b603e7cedd5e1931e20d50);
+            
+    
+            var marker_526f5e0f0080c2c937fce4af2ac906a0 = L.marker(
+                [37.85710601599945, -122.2297207017346],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_36af43979357b576e21f5d7e507a334e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2675f639790583735e7332b52ae6586b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_92840285174ae45286c359c97806a964 = $(`<div id="html_92840285174ae45286c359c97806a964" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 41</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 492</p>             <p><strong>Utilization:</strong> 45.7%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:10</p>         </div>         </div>`)[0];
+                popup_2675f639790583735e7332b52ae6586b.setContent(html_92840285174ae45286c359c97806a964);
+            
+        
+
+        marker_526f5e0f0080c2c937fce4af2ac906a0.bindPopup(popup_2675f639790583735e7332b52ae6586b)
+        ;
+
+        
+    
+    
+            marker_526f5e0f0080c2c937fce4af2ac906a0.bindTooltip(
+                `<div>
+                     Fire Station 41 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_526f5e0f0080c2c937fce4af2ac906a0.setIcon(icon_36af43979357b576e21f5d7e507a334e);
+            
+    
+            var marker_293cd3043538f47b739dadfbf59f9fb0 = L.marker(
+                [37.86276735481909, -122.44335945081937],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_8df3f58b7ce51d00f3cf58d9cb20153e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9b12207be83a83ef547b6a595df92134 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cd1c7b7153ed630b98e16c9ded5e2a4b = $(`<div id="html_cd1c7b7153ed630b98e16c9ded5e2a4b" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Shopping Center 42</h4>             <p><strong>Type:</strong> Shopping Center</p>             <p><strong>Capacity:</strong> 332</p>             <p><strong>Utilization:</strong> 50.4%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:44</p>         </div>         </div>`)[0];
+                popup_9b12207be83a83ef547b6a595df92134.setContent(html_cd1c7b7153ed630b98e16c9ded5e2a4b);
+            
+        
+
+        marker_293cd3043538f47b739dadfbf59f9fb0.bindPopup(popup_9b12207be83a83ef547b6a595df92134)
+        ;
+
+        
+    
+    
+            marker_293cd3043538f47b739dadfbf59f9fb0.bindTooltip(
+                `<div>
+                     Shopping Center 42 (Shopping Center)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_293cd3043538f47b739dadfbf59f9fb0.setIcon(icon_8df3f58b7ce51d00f3cf58d9cb20153e);
+            
+    
+            var marker_77d82b7ea8d84d7c4272cea8c9b1e4d7 = L.marker(
+                [37.91134334473203, -122.30219710961956],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_6db91e27139b75d11af09a435dda91c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "shopping-cart",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_57d872cdb699bb1b1d835c89a7ddefa2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_6d54acacd6ad227abcad05e2fe6a3166 = $(`<div id="html_6d54acacd6ad227abcad05e2fe6a3166" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Shopping Center 43</h4>             <p><strong>Type:</strong> Shopping Center</p>             <p><strong>Capacity:</strong> 366</p>             <p><strong>Utilization:</strong> 54.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 07:01</p>         </div>         </div>`)[0];
+                popup_57d872cdb699bb1b1d835c89a7ddefa2.setContent(html_6d54acacd6ad227abcad05e2fe6a3166);
+            
+        
+
+        marker_77d82b7ea8d84d7c4272cea8c9b1e4d7.bindPopup(popup_57d872cdb699bb1b1d835c89a7ddefa2)
+        ;
+
+        
+    
+    
+            marker_77d82b7ea8d84d7c4272cea8c9b1e4d7.bindTooltip(
+                `<div>
+                     Shopping Center 43 (Shopping Center)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_77d82b7ea8d84d7c4272cea8c9b1e4d7.setIcon(icon_6db91e27139b75d11af09a435dda91c1);
+            
+    
+            var marker_39d67dcb0b6492812d1365c5a60cb949 = L.marker(
+                [37.773741668021806, -122.40034012948854],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_e73f543f65b0f7fba03661741781ba6a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4d05aee86804df4e8b17a9479907aca2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dadf527cd9ceca28f861e7627ee057bf = $(`<div id="html_dadf527cd9ceca28f861e7627ee057bf" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Fire Station 44</h4>             <p><strong>Type:</strong> Fire Station</p>             <p><strong>Capacity:</strong> 95</p>             <p><strong>Utilization:</strong> 84.0%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:30</p>         </div>         </div>`)[0];
+                popup_4d05aee86804df4e8b17a9479907aca2.setContent(html_dadf527cd9ceca28f861e7627ee057bf);
+            
+        
+
+        marker_39d67dcb0b6492812d1365c5a60cb949.bindPopup(popup_4d05aee86804df4e8b17a9479907aca2)
+        ;
+
+        
+    
+    
+            marker_39d67dcb0b6492812d1365c5a60cb949.bindTooltip(
+                `<div>
+                     Fire Station 44 (Fire Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_39d67dcb0b6492812d1365c5a60cb949.setIcon(icon_e73f543f65b0f7fba03661741781ba6a);
+            
+    
+            var marker_888468b09cac64d59247162dc1a1f90e = L.marker(
+                [37.822223762457355, -122.42668289126568],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_ed2865fc2257f01633138fa1ad25d08d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "shield",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35d1ffe396361b936da8820187d71a1b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_99e1624a72ec3ba17a05024963579a5c = $(`<div id="html_99e1624a72ec3ba17a05024963579a5c" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Police Station 45</h4>             <p><strong>Type:</strong> Police Station</p>             <p><strong>Capacity:</strong> 148</p>             <p><strong>Utilization:</strong> 88.6%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:13</p>         </div>         </div>`)[0];
+                popup_35d1ffe396361b936da8820187d71a1b.setContent(html_99e1624a72ec3ba17a05024963579a5c);
+            
+        
+
+        marker_888468b09cac64d59247162dc1a1f90e.bindPopup(popup_35d1ffe396361b936da8820187d71a1b)
+        ;
+
+        
+    
+    
+            marker_888468b09cac64d59247162dc1a1f90e.bindTooltip(
+                `<div>
+                     Police Station 45 (Police Station)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_888468b09cac64d59247162dc1a1f90e.setIcon(icon_ed2865fc2257f01633138fa1ad25d08d);
+            
+    
+            var marker_387906f35583ef5c349fa03025284adf = L.marker(
+                [37.87945711683464, -122.45361417126054],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_8984c3c4688d79e8493820cec6aff52a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "tree",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a65a97eac13fa71e8931b751be247615 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b99e654c9d9b46880fa504809505c57e = $(`<div id="html_b99e654c9d9b46880fa504809505c57e" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Park 46</h4>             <p><strong>Type:</strong> Park</p>             <p><strong>Capacity:</strong> 305</p>             <p><strong>Utilization:</strong> 54.0%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:47</p>         </div>         </div>`)[0];
+                popup_a65a97eac13fa71e8931b751be247615.setContent(html_b99e654c9d9b46880fa504809505c57e);
+            
+        
+
+        marker_387906f35583ef5c349fa03025284adf.bindPopup(popup_a65a97eac13fa71e8931b751be247615)
+        ;
+
+        
+    
+    
+            marker_387906f35583ef5c349fa03025284adf.bindTooltip(
+                `<div>
+                     Park 46 (Park)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_387906f35583ef5c349fa03025284adf.setIcon(icon_8984c3c4688d79e8493820cec6aff52a);
+            
+    
+            var marker_368b50bf81e0c907131676c5d7655386 = L.marker(
+                [37.88453297895411, -122.45294110240708],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_a3f69c41b325bdcb4cfec8552d0b400b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_da27e7222668f8b4c7be04d5cd9d6a64 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_83257dedf6d1d5ce79e52c152e7a7703 = $(`<div id="html_83257dedf6d1d5ce79e52c152e7a7703" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 47</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 372</p>             <p><strong>Utilization:</strong> 59.9%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:41</p>         </div>         </div>`)[0];
+                popup_da27e7222668f8b4c7be04d5cd9d6a64.setContent(html_83257dedf6d1d5ce79e52c152e7a7703);
+            
+        
+
+        marker_368b50bf81e0c907131676c5d7655386.bindPopup(popup_da27e7222668f8b4c7be04d5cd9d6a64)
+        ;
+
+        
+    
+    
+            marker_368b50bf81e0c907131676c5d7655386.bindTooltip(
+                `<div>
+                     Hospital 47 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_368b50bf81e0c907131676c5d7655386.setIcon(icon_a3f69c41b325bdcb4cfec8552d0b400b);
+            
+    
+            var marker_908604cdcbd6a9e6531edc72c3d0b7a2 = L.marker(
+                [37.7807208718446, -122.53369702978306],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_9223ee6aeb447f34eab7fb35f52d0731 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aefd69dfaef0660a44e0dc3e34027c11 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a566c34e3a4a0ed60cfd03a61f9aa42e = $(`<div id="html_a566c34e3a4a0ed60cfd03a61f9aa42e" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>School 48</h4>             <p><strong>Type:</strong> School</p>             <p><strong>Capacity:</strong> 435</p>             <p><strong>Utilization:</strong> 42.6%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:25</p>         </div>         </div>`)[0];
+                popup_aefd69dfaef0660a44e0dc3e34027c11.setContent(html_a566c34e3a4a0ed60cfd03a61f9aa42e);
+            
+        
+
+        marker_908604cdcbd6a9e6531edc72c3d0b7a2.bindPopup(popup_aefd69dfaef0660a44e0dc3e34027c11)
+        ;
+
+        
+    
+    
+            marker_908604cdcbd6a9e6531edc72c3d0b7a2.bindTooltip(
+                `<div>
+                     School 48 (School)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_908604cdcbd6a9e6531edc72c3d0b7a2.setIcon(icon_9223ee6aeb447f34eab7fb35f52d0731);
+            
+    
+            var marker_06ce6e4504fcf22b6458b32a7840ab02 = L.marker(
+                [37.81676394691726, -122.49221792493633],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_150bf912dede881e751de34db00cd129 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "plus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ea6cc7a54ae775f32319aa892ad8013f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f3410c8a45b60b8f8f1be6a97f682c9c = $(`<div id="html_f3410c8a45b60b8f8f1be6a97f682c9c" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>Hospital 49</h4>             <p><strong>Type:</strong> Hospital</p>             <p><strong>Capacity:</strong> 88</p>             <p><strong>Utilization:</strong> 40.6%</p>             <p><strong>Status:</strong> 🟢 Active</p>             <p><strong>Updated:</strong> 06:10</p>         </div>         </div>`)[0];
+                popup_ea6cc7a54ae775f32319aa892ad8013f.setContent(html_f3410c8a45b60b8f8f1be6a97f682c9c);
+            
+        
+
+        marker_06ce6e4504fcf22b6458b32a7840ab02.bindPopup(popup_ea6cc7a54ae775f32319aa892ad8013f)
+        ;
+
+        
+    
+    
+            marker_06ce6e4504fcf22b6458b32a7840ab02.bindTooltip(
+                `<div>
+                     Hospital 49 (Hospital)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_06ce6e4504fcf22b6458b32a7840ab02.setIcon(icon_150bf912dede881e751de34db00cd129);
+            
+    
+            var marker_18b25ca60991808445ddeb3bcd869a54 = L.marker(
+                [37.805344911987085, -122.39367925090198],
+                {
+}
+            ).addTo(feature_group_8c205b4cd08083b00dc40aa39868caed);
+        
+    
+            var icon_20e51b134c2ad77ff58afee98efeb5c0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6649d19977c7275746476b16e4c527d = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f1fec259b329672e56962f5d4b6f281e = $(`<div id="html_f1fec259b329672e56962f5d4b6f281e" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>School 50</h4>             <p><strong>Type:</strong> School</p>             <p><strong>Capacity:</strong> 62</p>             <p><strong>Utilization:</strong> 25.7%</p>             <p><strong>Status:</strong> 🟡 Low Activity</p>             <p><strong>Updated:</strong> 06:58</p>         </div>         </div>`)[0];
+                popup_e6649d19977c7275746476b16e4c527d.setContent(html_f1fec259b329672e56962f5d4b6f281e);
+            
+        
+
+        marker_18b25ca60991808445ddeb3bcd869a54.bindPopup(popup_e6649d19977c7275746476b16e4c527d)
+        ;
+
+        
+    
+    
+            marker_18b25ca60991808445ddeb3bcd869a54.bindTooltip(
+                `<div>
+                     School 50 (School)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_18b25ca60991808445ddeb3bcd869a54.setIcon(icon_20e51b134c2ad77ff58afee98efeb5c0);
+            
+    
+            feature_group_8c205b4cd08083b00dc40aa39868caed.addTo(map_7e612d41bef4e1be01b4b82843ed6bb7);
+        
+    
+            var feature_group_d0d5d9fd82a276394c2dfe71cfc64a73 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_b605e23b7450c56532832692df6b39b1 = L.circleMarker(
+                [37.68023875028365, -122.37980034766466],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_bdf4e39017652feaa09a39cfda20238e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d1233ca939ce385a042bab2f7876a2fd = $(`<div id="html_d1233ca939ce385a042bab2f7876a2fd" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_0</p>             <p><strong>Current Reading:</strong> 29.2 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:51</p>         </div>         </div>`)[0];
+                popup_bdf4e39017652feaa09a39cfda20238e.setContent(html_d1233ca939ce385a042bab2f7876a2fd);
+            
+        
+
+        circle_marker_b605e23b7450c56532832692df6b39b1.bindPopup(popup_bdf4e39017652feaa09a39cfda20238e)
+        ;
+
+        
+    
+    
+            circle_marker_b605e23b7450c56532832692df6b39b1.bindTooltip(
+                `<div>
+                     Air Quality: 29.2 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_30583e8b00aec313700ad69504f8867d = L.circleMarker(
+                [37.65005543420502, -122.2593721528715],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_2795026b6711273334ad02bf5bcbb2ca = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2e64f432971e0840e142aa28939d8f13 = $(`<div id="html_2e64f432971e0840e142aa28939d8f13" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Noise Sensor</h4>             <p><strong>ID:</strong> sensor_1</p>             <p><strong>Current Reading:</strong> 70.2 dB</p>             <p><strong>Threshold:</strong> 70 dB</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 06:46</p>         </div>         </div>`)[0];
+                popup_2795026b6711273334ad02bf5bcbb2ca.setContent(html_2e64f432971e0840e142aa28939d8f13);
+            
+        
+
+        circle_marker_30583e8b00aec313700ad69504f8867d.bindPopup(popup_2795026b6711273334ad02bf5bcbb2ca)
+        ;
+
+        
+    
+    
+            circle_marker_30583e8b00aec313700ad69504f8867d.bindTooltip(
+                `<div>
+                     Noise: 70.2 dB
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_93bca011c13a1c37871f25d1e9cf6dd7 = L.circleMarker(
+                [37.78688669730717, -122.40812741055429],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_90b41da1d67410292f3f5fb308e58d38 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4655f7388e2bfe1f3ba5c606c2ec9dc4 = $(`<div id="html_4655f7388e2bfe1f3ba5c606c2ec9dc4" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_2</p>             <p><strong>Current Reading:</strong> 52.5 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:55</p>         </div>         </div>`)[0];
+                popup_90b41da1d67410292f3f5fb308e58d38.setContent(html_4655f7388e2bfe1f3ba5c606c2ec9dc4);
+            
+        
+
+        circle_marker_93bca011c13a1c37871f25d1e9cf6dd7.bindPopup(popup_90b41da1d67410292f3f5fb308e58d38)
+        ;
+
+        
+    
+    
+            circle_marker_93bca011c13a1c37871f25d1e9cf6dd7.bindTooltip(
+                `<div>
+                     Air Quality: 52.5 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7820c159fe2ec834a13c0450c79e02e8 = L.circleMarker(
+                [37.78004240152764, -122.50561958223435],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_15bb949dae20529d5f67d47c9834dcb0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f0da640cdeacb658a1be2d65e2a40ca4 = $(`<div id="html_f0da640cdeacb658a1be2d65e2a40ca4" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Weather Sensor</h4>             <p><strong>ID:</strong> sensor_3</p>             <p><strong>Current Reading:</strong> 25.4 °C</p>             <p><strong>Threshold:</strong> 25 °C</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 06:53</p>         </div>         </div>`)[0];
+                popup_15bb949dae20529d5f67d47c9834dcb0.setContent(html_f0da640cdeacb658a1be2d65e2a40ca4);
+            
+        
+
+        circle_marker_7820c159fe2ec834a13c0450c79e02e8.bindPopup(popup_15bb949dae20529d5f67d47c9834dcb0)
+        ;
+
+        
+    
+    
+            circle_marker_7820c159fe2ec834a13c0450c79e02e8.bindTooltip(
+                `<div>
+                     Weather: 25.4 °C
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cdae5dd025a1c72896d7cafe3f79acc7 = L.circleMarker(
+                [37.71647066946263, -122.40208331283344],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_39a7bd3dee3d00e4ce5c2d237936e841 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_61be78c516ba8371228560bbf111d076 = $(`<div id="html_61be78c516ba8371228560bbf111d076" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Noise Sensor</h4>             <p><strong>ID:</strong> sensor_4</p>             <p><strong>Current Reading:</strong> 42.3 dB</p>             <p><strong>Threshold:</strong> 70 dB</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:45</p>         </div>         </div>`)[0];
+                popup_39a7bd3dee3d00e4ce5c2d237936e841.setContent(html_61be78c516ba8371228560bbf111d076);
+            
+        
+
+        circle_marker_cdae5dd025a1c72896d7cafe3f79acc7.bindPopup(popup_39a7bd3dee3d00e4ce5c2d237936e841)
+        ;
+
+        
+    
+    
+            circle_marker_cdae5dd025a1c72896d7cafe3f79acc7.bindTooltip(
+                `<div>
+                     Noise: 42.3 dB
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_95e977eb9beb6bed080895f79c0002e5 = L.circleMarker(
+                [37.88397483927614, -122.35309872179161],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_56b706bb53902223b1b1a3abed10ecf2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bfc9df04d091fb86766541d4f5c4e93e = $(`<div id="html_bfc9df04d091fb86766541d4f5c4e93e" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Weather Sensor</h4>             <p><strong>ID:</strong> sensor_5</p>             <p><strong>Current Reading:</strong> 29.5 °C</p>             <p><strong>Threshold:</strong> 25 °C</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 06:37</p>         </div>         </div>`)[0];
+                popup_56b706bb53902223b1b1a3abed10ecf2.setContent(html_bfc9df04d091fb86766541d4f5c4e93e);
+            
+        
+
+        circle_marker_95e977eb9beb6bed080895f79c0002e5.bindPopup(popup_56b706bb53902223b1b1a3abed10ecf2)
+        ;
+
+        
+    
+    
+            circle_marker_95e977eb9beb6bed080895f79c0002e5.bindTooltip(
+                `<div>
+                     Weather: 29.5 °C
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_57d7d52a835b7d23ff43bd58634f5e86 = L.circleMarker(
+                [37.858741579519595, -122.46968557979805],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_7a39006db7ef6c6f1e03abf1d03e35b5 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_753ef07f303939fc4974e2cc75f6b3d8 = $(`<div id="html_753ef07f303939fc4974e2cc75f6b3d8" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Traffic Sensor</h4>             <p><strong>ID:</strong> sensor_6</p>             <p><strong>Current Reading:</strong> 27.1 % Congestion</p>             <p><strong>Threshold:</strong> 70 % Congestion</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:37</p>         </div>         </div>`)[0];
+                popup_7a39006db7ef6c6f1e03abf1d03e35b5.setContent(html_753ef07f303939fc4974e2cc75f6b3d8);
+            
+        
+
+        circle_marker_57d7d52a835b7d23ff43bd58634f5e86.bindPopup(popup_7a39006db7ef6c6f1e03abf1d03e35b5)
+        ;
+
+        
+    
+    
+            circle_marker_57d7d52a835b7d23ff43bd58634f5e86.bindTooltip(
+                `<div>
+                     Traffic: 27.1 % Congestion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bab1a289899f50a1f02a322718bd093a = L.circleMarker(
+                [37.71315447377946, -122.28649586155134],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_d59dcbbca1457a0d01b5f5aee41e084f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1005219722a8173cf6c20888a294e47a = $(`<div id="html_1005219722a8173cf6c20888a294e47a" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Traffic Sensor</h4>             <p><strong>ID:</strong> sensor_7</p>             <p><strong>Current Reading:</strong> 17.3 % Congestion</p>             <p><strong>Threshold:</strong> 70 % Congestion</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 07:04</p>         </div>         </div>`)[0];
+                popup_d59dcbbca1457a0d01b5f5aee41e084f.setContent(html_1005219722a8173cf6c20888a294e47a);
+            
+        
+
+        circle_marker_bab1a289899f50a1f02a322718bd093a.bindPopup(popup_d59dcbbca1457a0d01b5f5aee41e084f)
+        ;
+
+        
+    
+    
+            circle_marker_bab1a289899f50a1f02a322718bd093a.bindTooltip(
+                `<div>
+                     Traffic: 17.3 % Congestion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_69a897f47f3879c19542330f12664d0b = L.circleMarker(
+                [37.74935159377482, -122.4357693204382],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_a9e9bfc66314c6d3bdccc974473e1068 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2e721ebed99220e2fc96bbe897a8f362 = $(`<div id="html_2e721ebed99220e2fc96bbe897a8f362" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Traffic Sensor</h4>             <p><strong>ID:</strong> sensor_8</p>             <p><strong>Current Reading:</strong> 18.3 % Congestion</p>             <p><strong>Threshold:</strong> 70 % Congestion</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:52</p>         </div>         </div>`)[0];
+                popup_a9e9bfc66314c6d3bdccc974473e1068.setContent(html_2e721ebed99220e2fc96bbe897a8f362);
+            
+        
+
+        circle_marker_69a897f47f3879c19542330f12664d0b.bindPopup(popup_a9e9bfc66314c6d3bdccc974473e1068)
+        ;
+
+        
+    
+    
+            circle_marker_69a897f47f3879c19542330f12664d0b.bindTooltip(
+                `<div>
+                     Traffic: 18.3 % Congestion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_84b19e46fb429c08be3555a10c23753f = L.circleMarker(
+                [37.79658493989938, -122.23981547151915],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_fdef86fef7e0bd37e9136581da8c6677 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_cce3ba71c620689acf0fd84eda130b61 = $(`<div id="html_cce3ba71c620689acf0fd84eda130b61" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Water Quality Sensor</h4>             <p><strong>ID:</strong> sensor_9</p>             <p><strong>Current Reading:</strong> 7.8 pH</p>             <p><strong>Threshold:</strong> 8.0 pH</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 07:00</p>         </div>         </div>`)[0];
+                popup_fdef86fef7e0bd37e9136581da8c6677.setContent(html_cce3ba71c620689acf0fd84eda130b61);
+            
+        
+
+        circle_marker_84b19e46fb429c08be3555a10c23753f.bindPopup(popup_fdef86fef7e0bd37e9136581da8c6677)
+        ;
+
+        
+    
+    
+            circle_marker_84b19e46fb429c08be3555a10c23753f.bindTooltip(
+                `<div>
+                     Water Quality: 7.8 pH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_96f9334f8207eeaf3cf2ca2256ec7e42 = L.circleMarker(
+                [37.65335040272368, -122.4581387258293],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_f9bc95627842e8034fa5a3259257b55f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ba4fdc55ae363ccd68e65ef65227db4e = $(`<div id="html_ba4fdc55ae363ccd68e65ef65227db4e" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Water Quality Sensor</h4>             <p><strong>ID:</strong> sensor_10</p>             <p><strong>Current Reading:</strong> 7.2 pH</p>             <p><strong>Threshold:</strong> 8.0 pH</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 07:00</p>         </div>         </div>`)[0];
+                popup_f9bc95627842e8034fa5a3259257b55f.setContent(html_ba4fdc55ae363ccd68e65ef65227db4e);
+            
+        
+
+        circle_marker_96f9334f8207eeaf3cf2ca2256ec7e42.bindPopup(popup_f9bc95627842e8034fa5a3259257b55f)
+        ;
+
+        
+    
+    
+            circle_marker_96f9334f8207eeaf3cf2ca2256ec7e42.bindTooltip(
+                `<div>
+                     Water Quality: 7.2 pH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2a0e974a1b82bfb4c26cff117ea84c66 = L.circleMarker(
+                [37.720499653270565, -122.44047246758937],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_e95684158d708a525b0ca53a0408d66a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a6e9c7b503aed5bf9259c436dc415d86 = $(`<div id="html_a6e9c7b503aed5bf9259c436dc415d86" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_11</p>             <p><strong>Current Reading:</strong> 32.2 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:51</p>         </div>         </div>`)[0];
+                popup_e95684158d708a525b0ca53a0408d66a.setContent(html_a6e9c7b503aed5bf9259c436dc415d86);
+            
+        
+
+        circle_marker_2a0e974a1b82bfb4c26cff117ea84c66.bindPopup(popup_e95684158d708a525b0ca53a0408d66a)
+        ;
+
+        
+    
+    
+            circle_marker_2a0e974a1b82bfb4c26cff117ea84c66.bindTooltip(
+                `<div>
+                     Air Quality: 32.2 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1e2fcdb3d5d61e48e069194ba2750d9c = L.circleMarker(
+                [37.8308273905488, -122.37140826930312],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_313be750866c5afb93e88fa35cbee225 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d3c421051434101024be652dfba858e7 = $(`<div id="html_d3c421051434101024be652dfba858e7" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Noise Sensor</h4>             <p><strong>ID:</strong> sensor_12</p>             <p><strong>Current Reading:</strong> 55.6 dB</p>             <p><strong>Threshold:</strong> 70 dB</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 07:00</p>         </div>         </div>`)[0];
+                popup_313be750866c5afb93e88fa35cbee225.setContent(html_d3c421051434101024be652dfba858e7);
+            
+        
+
+        circle_marker_1e2fcdb3d5d61e48e069194ba2750d9c.bindPopup(popup_313be750866c5afb93e88fa35cbee225)
+        ;
+
+        
+    
+    
+            circle_marker_1e2fcdb3d5d61e48e069194ba2750d9c.bindTooltip(
+                `<div>
+                     Noise: 55.6 dB
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ed1b7de8080227f1d2fb6479ddded090 = L.circleMarker(
+                [37.89834541214873, -122.3135388954279],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_61d33a7106f10ff2331ea6e3f5c84ddb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_fe1201110dad66b106620ce4feb00496 = $(`<div id="html_fe1201110dad66b106620ce4feb00496" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Traffic Sensor</h4>             <p><strong>ID:</strong> sensor_13</p>             <p><strong>Current Reading:</strong> 4.5 % Congestion</p>             <p><strong>Threshold:</strong> 70 % Congestion</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:55</p>         </div>         </div>`)[0];
+                popup_61d33a7106f10ff2331ea6e3f5c84ddb.setContent(html_fe1201110dad66b106620ce4feb00496);
+            
+        
+
+        circle_marker_ed1b7de8080227f1d2fb6479ddded090.bindPopup(popup_61d33a7106f10ff2331ea6e3f5c84ddb)
+        ;
+
+        
+    
+    
+            circle_marker_ed1b7de8080227f1d2fb6479ddded090.bindTooltip(
+                `<div>
+                     Traffic: 4.5 % Congestion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b02f0e751c34bc73bc3de9b7abe98ba9 = L.circleMarker(
+                [37.775045088895574, -122.35892517745667],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_86c9679269896e339b6591a1d336e2a8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4ecb16d3b6363377d01f65a83d14e06f = $(`<div id="html_4ecb16d3b6363377d01f65a83d14e06f" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Traffic Sensor</h4>             <p><strong>ID:</strong> sensor_14</p>             <p><strong>Current Reading:</strong> 53.9 % Congestion</p>             <p><strong>Threshold:</strong> 70 % Congestion</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:52</p>         </div>         </div>`)[0];
+                popup_86c9679269896e339b6591a1d336e2a8.setContent(html_4ecb16d3b6363377d01f65a83d14e06f);
+            
+        
+
+        circle_marker_b02f0e751c34bc73bc3de9b7abe98ba9.bindPopup(popup_86c9679269896e339b6591a1d336e2a8)
+        ;
+
+        
+    
+    
+            circle_marker_b02f0e751c34bc73bc3de9b7abe98ba9.bindTooltip(
+                `<div>
+                     Traffic: 53.9 % Congestion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_16980db1d2807bcd75b3a716d023324b = L.circleMarker(
+                [37.82032146942061, -122.40754546148966],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_42ec3b0839114a4b3727c5529646bd38 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_45cb7bc59a42ff6e2a2ebef3219cd244 = $(`<div id="html_45cb7bc59a42ff6e2a2ebef3219cd244" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Noise Sensor</h4>             <p><strong>ID:</strong> sensor_15</p>             <p><strong>Current Reading:</strong> 82.5 dB</p>             <p><strong>Threshold:</strong> 70 dB</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 06:37</p>         </div>         </div>`)[0];
+                popup_42ec3b0839114a4b3727c5529646bd38.setContent(html_45cb7bc59a42ff6e2a2ebef3219cd244);
+            
+        
+
+        circle_marker_16980db1d2807bcd75b3a716d023324b.bindPopup(popup_42ec3b0839114a4b3727c5529646bd38)
+        ;
+
+        
+    
+    
+            circle_marker_16980db1d2807bcd75b3a716d023324b.bindTooltip(
+                `<div>
+                     Noise: 82.5 dB
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c45e735dfc5c1d44674e43dcae7b2855 = L.circleMarker(
+                [37.823527083226786, -122.33679897657376],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_77f70910aca4d13bc592f4d3641dc3f4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9ffcc54f1b8f09fb9d7c2d2f1a472088 = $(`<div id="html_9ffcc54f1b8f09fb9d7c2d2f1a472088" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Weather Sensor</h4>             <p><strong>ID:</strong> sensor_16</p>             <p><strong>Current Reading:</strong> 21.5 °C</p>             <p><strong>Threshold:</strong> 25 °C</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 07:04</p>         </div>         </div>`)[0];
+                popup_77f70910aca4d13bc592f4d3641dc3f4.setContent(html_9ffcc54f1b8f09fb9d7c2d2f1a472088);
+            
+        
+
+        circle_marker_c45e735dfc5c1d44674e43dcae7b2855.bindPopup(popup_77f70910aca4d13bc592f4d3641dc3f4)
+        ;
+
+        
+    
+    
+            circle_marker_c45e735dfc5c1d44674e43dcae7b2855.bindTooltip(
+                `<div>
+                     Weather: 21.5 °C
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1953ca02cc4c70c78dc766dd8ce8e6c2 = L.circleMarker(
+                [37.81339741827425, -122.38203542618169],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_731782d48dbf8283ddcd4bb555a5f4d0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_13df866c0b6f76a1d0e262d5cbb278fe = $(`<div id="html_13df866c0b6f76a1d0e262d5cbb278fe" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_17</p>             <p><strong>Current Reading:</strong> 101.4 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 07:04</p>         </div>         </div>`)[0];
+                popup_731782d48dbf8283ddcd4bb555a5f4d0.setContent(html_13df866c0b6f76a1d0e262d5cbb278fe);
+            
+        
+
+        circle_marker_1953ca02cc4c70c78dc766dd8ce8e6c2.bindPopup(popup_731782d48dbf8283ddcd4bb555a5f4d0)
+        ;
+
+        
+    
+    
+            circle_marker_1953ca02cc4c70c78dc766dd8ce8e6c2.bindTooltip(
+                `<div>
+                     Air Quality: 101.4 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9c75f490dc94087dc42649ba033f2d83 = L.circleMarker(
+                [37.68330411839429, -122.37209471064575],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_48db203f0d9e097526672e9ed641602f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a3360f576b3a91870883f05a30bdb4d3 = $(`<div id="html_a3360f576b3a91870883f05a30bdb4d3" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_18</p>             <p><strong>Current Reading:</strong> 55.6 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:53</p>         </div>         </div>`)[0];
+                popup_48db203f0d9e097526672e9ed641602f.setContent(html_a3360f576b3a91870883f05a30bdb4d3);
+            
+        
+
+        circle_marker_9c75f490dc94087dc42649ba033f2d83.bindPopup(popup_48db203f0d9e097526672e9ed641602f)
+        ;
+
+        
+    
+    
+            circle_marker_9c75f490dc94087dc42649ba033f2d83.bindTooltip(
+                `<div>
+                     Air Quality: 55.6 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_85020209bb7d08684d872fcb9af8c87a = L.circleMarker(
+                [37.78372396629067, -122.45380203086799],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_285be8a4786560ddc990aa127b81a510 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f7753e56b6c667aa238d8639c9f54ecc = $(`<div id="html_f7753e56b6c667aa238d8639c9f54ecc" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Traffic Sensor</h4>             <p><strong>ID:</strong> sensor_19</p>             <p><strong>Current Reading:</strong> 33.7 % Congestion</p>             <p><strong>Threshold:</strong> 70 % Congestion</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:39</p>         </div>         </div>`)[0];
+                popup_285be8a4786560ddc990aa127b81a510.setContent(html_f7753e56b6c667aa238d8639c9f54ecc);
+            
+        
+
+        circle_marker_85020209bb7d08684d872fcb9af8c87a.bindPopup(popup_285be8a4786560ddc990aa127b81a510)
+        ;
+
+        
+    
+    
+            circle_marker_85020209bb7d08684d872fcb9af8c87a.bindTooltip(
+                `<div>
+                     Traffic: 33.7 % Congestion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ba3ea7f8f237eb0500df23bc467136f0 = L.circleMarker(
+                [37.727750819444466, -122.35143183223832],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_b7c1a4173ed48ad878666a4bf616d0c0 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_10fd80406d7023997ed0b7f2678db572 = $(`<div id="html_10fd80406d7023997ed0b7f2678db572" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Water Quality Sensor</h4>             <p><strong>ID:</strong> sensor_20</p>             <p><strong>Current Reading:</strong> 6.7 pH</p>             <p><strong>Threshold:</strong> 8.0 pH</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:44</p>         </div>         </div>`)[0];
+                popup_b7c1a4173ed48ad878666a4bf616d0c0.setContent(html_10fd80406d7023997ed0b7f2678db572);
+            
+        
+
+        circle_marker_ba3ea7f8f237eb0500df23bc467136f0.bindPopup(popup_b7c1a4173ed48ad878666a4bf616d0c0)
+        ;
+
+        
+    
+    
+            circle_marker_ba3ea7f8f237eb0500df23bc467136f0.bindTooltip(
+                `<div>
+                     Water Quality: 6.7 pH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_deddb3b6162dfd07338c91db9474ce2d = L.circleMarker(
+                [37.84686799003466, -122.39481603832986],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_88f52e971217cd314caae31b3fe043cb = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a20d3199c0053f1e952e9849e5e06dcd = $(`<div id="html_a20d3199c0053f1e952e9849e5e06dcd" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Traffic Sensor</h4>             <p><strong>ID:</strong> sensor_21</p>             <p><strong>Current Reading:</strong> 73.5 % Congestion</p>             <p><strong>Threshold:</strong> 70 % Congestion</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 06:44</p>         </div>         </div>`)[0];
+                popup_88f52e971217cd314caae31b3fe043cb.setContent(html_a20d3199c0053f1e952e9849e5e06dcd);
+            
+        
+
+        circle_marker_deddb3b6162dfd07338c91db9474ce2d.bindPopup(popup_88f52e971217cd314caae31b3fe043cb)
+        ;
+
+        
+    
+    
+            circle_marker_deddb3b6162dfd07338c91db9474ce2d.bindTooltip(
+                `<div>
+                     Traffic: 73.5 % Congestion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b688a139a7e341d46868a0d98f9e1d6e = L.circleMarker(
+                [37.708580399126234, -122.46421448321576],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_f9b9c5769096ef44c5aee54a61789148 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ea9d9806e6d0d360b4ceb979a95fea5b = $(`<div id="html_ea9d9806e6d0d360b4ceb979a95fea5b" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Water Quality Sensor</h4>             <p><strong>ID:</strong> sensor_22</p>             <p><strong>Current Reading:</strong> 8.0 pH</p>             <p><strong>Threshold:</strong> 8.0 pH</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 07:02</p>         </div>         </div>`)[0];
+                popup_f9b9c5769096ef44c5aee54a61789148.setContent(html_ea9d9806e6d0d360b4ceb979a95fea5b);
+            
+        
+
+        circle_marker_b688a139a7e341d46868a0d98f9e1d6e.bindPopup(popup_f9b9c5769096ef44c5aee54a61789148)
+        ;
+
+        
+    
+    
+            circle_marker_b688a139a7e341d46868a0d98f9e1d6e.bindTooltip(
+                `<div>
+                     Water Quality: 8.0 pH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d469b2051039f3905f44b6b6bf4007ba = L.circleMarker(
+                [37.725680382738446, -122.38877604262794],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_c164f433100eb97c23034a9f5d5d2ab6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5bab78ae2c7fad8fd86b408d6cc56d61 = $(`<div id="html_5bab78ae2c7fad8fd86b408d6cc56d61" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_23</p>             <p><strong>Current Reading:</strong> 52.5 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:41</p>         </div>         </div>`)[0];
+                popup_c164f433100eb97c23034a9f5d5d2ab6.setContent(html_5bab78ae2c7fad8fd86b408d6cc56d61);
+            
+        
+
+        circle_marker_d469b2051039f3905f44b6b6bf4007ba.bindPopup(popup_c164f433100eb97c23034a9f5d5d2ab6)
+        ;
+
+        
+    
+    
+            circle_marker_d469b2051039f3905f44b6b6bf4007ba.bindTooltip(
+                `<div>
+                     Air Quality: 52.5 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bbbe59782c2c0051d75cc246fd9841fc = L.circleMarker(
+                [37.83605825882606, -122.50829310501952],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_d0205c1f86f90f24a42d92a8b128413e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4d9e69bc4f936781a1b4b9283dff64d4 = $(`<div id="html_4d9e69bc4f936781a1b4b9283dff64d4" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Water Quality Sensor</h4>             <p><strong>ID:</strong> sensor_24</p>             <p><strong>Current Reading:</strong> 8.0 pH</p>             <p><strong>Threshold:</strong> 8.0 pH</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 07:02</p>         </div>         </div>`)[0];
+                popup_d0205c1f86f90f24a42d92a8b128413e.setContent(html_4d9e69bc4f936781a1b4b9283dff64d4);
+            
+        
+
+        circle_marker_bbbe59782c2c0051d75cc246fd9841fc.bindPopup(popup_d0205c1f86f90f24a42d92a8b128413e)
+        ;
+
+        
+    
+    
+            circle_marker_bbbe59782c2c0051d75cc246fd9841fc.bindTooltip(
+                `<div>
+                     Water Quality: 8.0 pH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7bba35e1ded414c3c090d1e9899bc26e = L.circleMarker(
+                [37.82552819499062, -122.5997326943614],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_de833a7d5cce9d739cdd2e705dc9a51e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8d3bab818d1768567405101ffd577c8f = $(`<div id="html_8d3bab818d1768567405101ffd577c8f" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_25</p>             <p><strong>Current Reading:</strong> 84.6 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:40</p>         </div>         </div>`)[0];
+                popup_de833a7d5cce9d739cdd2e705dc9a51e.setContent(html_8d3bab818d1768567405101ffd577c8f);
+            
+        
+
+        circle_marker_7bba35e1ded414c3c090d1e9899bc26e.bindPopup(popup_de833a7d5cce9d739cdd2e705dc9a51e)
+        ;
+
+        
+    
+    
+            circle_marker_7bba35e1ded414c3c090d1e9899bc26e.bindTooltip(
+                `<div>
+                     Air Quality: 84.6 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1a7dbb72e6dec626aef5a628416bd8b2 = L.circleMarker(
+                [37.75576201617042, -122.35108202311457],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_51bb75cbbe13da848f37b405ebe47fff = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_f0ac201a85580f05abed46366abcac29 = $(`<div id="html_f0ac201a85580f05abed46366abcac29" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Water Quality Sensor</h4>             <p><strong>ID:</strong> sensor_26</p>             <p><strong>Current Reading:</strong> 6.5 pH</p>             <p><strong>Threshold:</strong> 8.0 pH</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:56</p>         </div>         </div>`)[0];
+                popup_51bb75cbbe13da848f37b405ebe47fff.setContent(html_f0ac201a85580f05abed46366abcac29);
+            
+        
+
+        circle_marker_1a7dbb72e6dec626aef5a628416bd8b2.bindPopup(popup_51bb75cbbe13da848f37b405ebe47fff)
+        ;
+
+        
+    
+    
+            circle_marker_1a7dbb72e6dec626aef5a628416bd8b2.bindTooltip(
+                `<div>
+                     Water Quality: 6.5 pH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_515b343183617020b4dd1f6066ac88bb = L.circleMarker(
+                [37.753216763016916, -122.46844757463266],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_88d6fc494cc9a92da0c554b031e8c2a7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3f85faa762200f88bbcc50a5c17a77f1 = $(`<div id="html_3f85faa762200f88bbcc50a5c17a77f1" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Weather Sensor</h4>             <p><strong>ID:</strong> sensor_27</p>             <p><strong>Current Reading:</strong> 29.0 °C</p>             <p><strong>Threshold:</strong> 25 °C</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 06:45</p>         </div>         </div>`)[0];
+                popup_88d6fc494cc9a92da0c554b031e8c2a7.setContent(html_3f85faa762200f88bbcc50a5c17a77f1);
+            
+        
+
+        circle_marker_515b343183617020b4dd1f6066ac88bb.bindPopup(popup_88d6fc494cc9a92da0c554b031e8c2a7)
+        ;
+
+        
+    
+    
+            circle_marker_515b343183617020b4dd1f6066ac88bb.bindTooltip(
+                `<div>
+                     Weather: 29.0 °C
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_33e8d5d754f49a5daa7fc011a2e3cf42 = L.circleMarker(
+                [37.706639204636964, -122.4205424438164],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_07dc766df216c5639685942b0845d280 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_07233022b231191c9109c647c3827ff4 = $(`<div id="html_07233022b231191c9109c647c3827ff4" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Weather Sensor</h4>             <p><strong>ID:</strong> sensor_28</p>             <p><strong>Current Reading:</strong> 11.8 °C</p>             <p><strong>Threshold:</strong> 25 °C</p>             <p><strong>Status:</strong> ✅ Normal</p>             <p><strong>Last Reading:</strong> 06:53</p>         </div>         </div>`)[0];
+                popup_07dc766df216c5639685942b0845d280.setContent(html_07233022b231191c9109c647c3827ff4);
+            
+        
+
+        circle_marker_33e8d5d754f49a5daa7fc011a2e3cf42.bindPopup(popup_07dc766df216c5639685942b0845d280)
+        ;
+
+        
+    
+    
+            circle_marker_33e8d5d754f49a5daa7fc011a2e3cf42.bindTooltip(
+                `<div>
+                     Weather: 11.8 °C
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_723a2d76cf86e05a9eb536663724eb87 = L.circleMarker(
+                [37.659647780895455, -122.3978545876598],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(feature_group_d0d5d9fd82a276394c2dfe71cfc64a73);
+        
+    
+        var popup_b50bb06892cedd1805de1b9b69476bcc = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_609754aea383ffe76e793b4439faa5d4 = $(`<div id="html_609754aea383ffe76e793b4439faa5d4" style="width: 100.0%; height: 100.0%;">         <div style="width: 220px;">             <h4>🔬 Air Quality Sensor</h4>             <p><strong>ID:</strong> sensor_29</p>             <p><strong>Current Reading:</strong> 143.0 AQI</p>             <p><strong>Threshold:</strong> 100 AQI</p>             <p><strong>Status:</strong> 🚨 Alert</p>             <p><strong>Last Reading:</strong> 06:49</p>         </div>         </div>`)[0];
+                popup_b50bb06892cedd1805de1b9b69476bcc.setContent(html_609754aea383ffe76e793b4439faa5d4);
+            
+        
+
+        circle_marker_723a2d76cf86e05a9eb536663724eb87.bindPopup(popup_b50bb06892cedd1805de1b9b69476bcc)
+        ;
+
+        
+    
+    
+            circle_marker_723a2d76cf86e05a9eb536663724eb87.bindTooltip(
+                `<div>
+                     Air Quality: 143.0 AQI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_d0d5d9fd82a276394c2dfe71cfc64a73.addTo(map_7e612d41bef4e1be01b4b82843ed6bb7);
+        
+    
+            var feature_group_a73f7099cc1eb5bfdc0fab319ef565a2 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_889945fa23abd4adc6df9a96ee0129cc_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "darkblue", "fillColor": "blue", "fillOpacity": 0.3, "weight": 2};
+            }
+        }
+
+        function geo_json_889945fa23abd4adc6df9a96ee0129cc_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_889945fa23abd4adc6df9a96ee0129cc = L.geoJson(null, {
+                onEachFeature: geo_json_889945fa23abd4adc6df9a96ee0129cc_onEachFeature,
+            
+                style: geo_json_889945fa23abd4adc6df9a96ee0129cc_styler,
+            ...{
+}
+        });
+
+        function geo_json_889945fa23abd4adc6df9a96ee0129cc_add (data) {
+            geo_json_889945fa23abd4adc6df9a96ee0129cc
+                .addData(data);
+        }
+            geo_json_889945fa23abd4adc6df9a96ee0129cc_add({"features": [{"geometry": {"coordinates": [[[-122.38335498584257, 37.739942671095406], [-122.39709228665645, 37.76846847016655], [-122.42795972139534, 37.77551376071687], [-122.45271348211995, 37.75577329526423], [-122.45271348211995, 37.724112046926585], [-122.42795972139534, 37.70437158147394], [-122.39709228665645, 37.71141687202426], [-122.38335498584257, 37.739942671095406], [-122.38335498584257, 37.739942671095406]]], "type": "Polygon"}, "properties": {"area_km2": 19.740711135820177, "density": 980.1065355184905, "name": "District 1", "population": 19348}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_889945fa23abd4adc6df9a96ee0129cc.bindTooltip(
+                `<div>
+                     District 1 (Pop: 19,348)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_d3f8d3f4e830508f97d31de6f79be9d9 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_481df45cb9aa117bca103dbe9ea4fc9b = $(`<div id="html_481df45cb9aa117bca103dbe9ea4fc9b" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>🏘️ District 1</h4>             <p><strong>Population:</strong> 19,348</p>             <p><strong>Area:</strong> 19.7 km²</p>             <p><strong>Density:</strong> 980 people/km²</p>         </div>         </div>`)[0];
+                popup_d3f8d3f4e830508f97d31de6f79be9d9.setContent(html_481df45cb9aa117bca103dbe9ea4fc9b);
+            
+        
+
+        geo_json_889945fa23abd4adc6df9a96ee0129cc.bindPopup(popup_d3f8d3f4e830508f97d31de6f79be9d9)
+        ;
+
+        
+    
+    
+            geo_json_889945fa23abd4adc6df9a96ee0129cc.addTo(feature_group_a73f7099cc1eb5bfdc0fab319ef565a2);
+        
+    
+        function geo_json_3eb37dc25a502e50260359b328ac2d5f_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "darkblue", "fillColor": "blue", "fillOpacity": 0.3, "weight": 2};
+            }
+        }
+
+        function geo_json_3eb37dc25a502e50260359b328ac2d5f_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_3eb37dc25a502e50260359b328ac2d5f = L.geoJson(null, {
+                onEachFeature: geo_json_3eb37dc25a502e50260359b328ac2d5f_onEachFeature,
+            
+                style: geo_json_3eb37dc25a502e50260359b328ac2d5f_styler,
+            ...{
+}
+        });
+
+        function geo_json_3eb37dc25a502e50260359b328ac2d5f_add (data) {
+            geo_json_3eb37dc25a502e50260359b328ac2d5f
+                .addData(data);
+        }
+            geo_json_3eb37dc25a502e50260359b328ac2d5f_add({"features": [{"geometry": {"coordinates": [[[-122.3501112969249, 37.865583328793946], [-122.3685827209484, 37.90393963600389], [-122.4100876339808, 37.91341286155867], [-122.44337198996278, 37.88686947339695], [-122.44337198996278, 37.84429718419094], [-122.4100876339808, 37.81775379602922], [-122.3685827209484, 37.827227021584], [-122.3501112969249, 37.865583328793946], [-122.3501112969249, 37.865583328793946]]], "type": "Polygon"}, "properties": {"area_km2": 20.230212634349446, "density": 2873.7216484462083, "name": "District 2", "population": 58136}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_3eb37dc25a502e50260359b328ac2d5f.bindTooltip(
+                `<div>
+                     District 2 (Pop: 58,136)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_074e0d83c83caa079eaa5a887ec0ccde = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a03a1d4e1b1ddc97126752458c95853d = $(`<div id="html_a03a1d4e1b1ddc97126752458c95853d" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>🏘️ District 2</h4>             <p><strong>Population:</strong> 58,136</p>             <p><strong>Area:</strong> 20.2 km²</p>             <p><strong>Density:</strong> 2874 people/km²</p>         </div>         </div>`)[0];
+                popup_074e0d83c83caa079eaa5a887ec0ccde.setContent(html_a03a1d4e1b1ddc97126752458c95853d);
+            
+        
+
+        geo_json_3eb37dc25a502e50260359b328ac2d5f.bindPopup(popup_074e0d83c83caa079eaa5a887ec0ccde)
+        ;
+
+        
+    
+    
+            geo_json_3eb37dc25a502e50260359b328ac2d5f.addTo(feature_group_a73f7099cc1eb5bfdc0fab319ef565a2);
+        
+    
+        function geo_json_147beb92239b44273870fb3ca5285a8f_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "darkblue", "fillColor": "blue", "fillOpacity": 0.3, "weight": 2};
+            }
+        }
+
+        function geo_json_147beb92239b44273870fb3ca5285a8f_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_147beb92239b44273870fb3ca5285a8f = L.geoJson(null, {
+                onEachFeature: geo_json_147beb92239b44273870fb3ca5285a8f_onEachFeature,
+            
+                style: geo_json_147beb92239b44273870fb3ca5285a8f_styler,
+            ...{
+}
+        });
+
+        function geo_json_147beb92239b44273870fb3ca5285a8f_add (data) {
+            geo_json_147beb92239b44273870fb3ca5285a8f
+                .addData(data);
+        }
+            geo_json_147beb92239b44273870fb3ca5285a8f_add({"features": [{"geometry": {"coordinates": [[[-122.38469243524196, 37.73378898022168], [-122.39317265131184, 37.75139833033836], [-122.41222752385599, 37.7557474806519], [-122.4275083452001, 37.74356143226971], [-122.4275083452001, 37.72401652817366], [-122.41222752385599, 37.711830479791466], [-122.39317265131184, 37.716179630105], [-122.38469243524196, 37.73378898022168], [-122.38469243524196, 37.73378898022168]]], "type": "Polygon"}, "properties": {"area_km2": 9.45152835142061, "density": 6002.415470877037, "name": "District 3", "population": 56732}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_147beb92239b44273870fb3ca5285a8f.bindTooltip(
+                `<div>
+                     District 3 (Pop: 56,732)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_7484a78caf1285c2faa54f0939f2153b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_707a3e054bf712aca60fbfdbed59ea0f = $(`<div id="html_707a3e054bf712aca60fbfdbed59ea0f" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>🏘️ District 3</h4>             <p><strong>Population:</strong> 56,732</p>             <p><strong>Area:</strong> 9.5 km²</p>             <p><strong>Density:</strong> 6002 people/km²</p>         </div>         </div>`)[0];
+                popup_7484a78caf1285c2faa54f0939f2153b.setContent(html_707a3e054bf712aca60fbfdbed59ea0f);
+            
+        
+
+        geo_json_147beb92239b44273870fb3ca5285a8f.bindPopup(popup_7484a78caf1285c2faa54f0939f2153b)
+        ;
+
+        
+    
+    
+            geo_json_147beb92239b44273870fb3ca5285a8f.addTo(feature_group_a73f7099cc1eb5bfdc0fab319ef565a2);
+        
+    
+        function geo_json_536ba16435ae551be8fc7e2dee51a017_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "darkblue", "fillColor": "blue", "fillOpacity": 0.3, "weight": 2};
+            }
+        }
+
+        function geo_json_536ba16435ae551be8fc7e2dee51a017_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_536ba16435ae551be8fc7e2dee51a017 = L.geoJson(null, {
+                onEachFeature: geo_json_536ba16435ae551be8fc7e2dee51a017_onEachFeature,
+            
+                style: geo_json_536ba16435ae551be8fc7e2dee51a017_styler,
+            ...{
+}
+        });
+
+        function geo_json_536ba16435ae551be8fc7e2dee51a017_add (data) {
+            geo_json_536ba16435ae551be8fc7e2dee51a017
+                .addData(data);
+        }
+            geo_json_536ba16435ae551be8fc7e2dee51a017_add({"features": [{"geometry": {"coordinates": [[[-122.40668701431494, 37.81921009830647], [-122.41587316459167, 37.838285335908246], [-122.4365142569002, 37.84299653053195], [-122.45306712773062, 37.82979605653507], [-122.45306712773062, 37.80862414007787], [-122.4365142569002, 37.79542366608099], [-122.41587316459167, 37.800134860704695], [-122.40668701431494, 37.81921009830647], [-122.40668701431494, 37.81921009830647]]], "type": "Polygon"}, "properties": {"area_km2": 6.696754281703838, "density": 14647.69287832414, "name": "District 4", "population": 98092}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_536ba16435ae551be8fc7e2dee51a017.bindTooltip(
+                `<div>
+                     District 4 (Pop: 98,092)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_e824ca894a79e0861126710e8c3252e8 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_90beae54b81dc56d0a87d48dad51eb05 = $(`<div id="html_90beae54b81dc56d0a87d48dad51eb05" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>🏘️ District 4</h4>             <p><strong>Population:</strong> 98,092</p>             <p><strong>Area:</strong> 6.7 km²</p>             <p><strong>Density:</strong> 14648 people/km²</p>         </div>         </div>`)[0];
+                popup_e824ca894a79e0861126710e8c3252e8.setContent(html_90beae54b81dc56d0a87d48dad51eb05);
+            
+        
+
+        geo_json_536ba16435ae551be8fc7e2dee51a017.bindPopup(popup_e824ca894a79e0861126710e8c3252e8)
+        ;
+
+        
+    
+    
+            geo_json_536ba16435ae551be8fc7e2dee51a017.addTo(feature_group_a73f7099cc1eb5bfdc0fab319ef565a2);
+        
+    
+        function geo_json_412431cfbf64c8b4425edfd36f9983ab_styler(feature) {
+            switch(feature.properties.name) {
+                default:
+                    return {"color": "darkblue", "fillColor": "blue", "fillOpacity": 0.3, "weight": 2};
+            }
+        }
+
+        function geo_json_412431cfbf64c8b4425edfd36f9983ab_onEachFeature(feature, layer) {
+
+            layer.on({
+            });
+        };
+        var geo_json_412431cfbf64c8b4425edfd36f9983ab = L.geoJson(null, {
+                onEachFeature: geo_json_412431cfbf64c8b4425edfd36f9983ab_onEachFeature,
+            
+                style: geo_json_412431cfbf64c8b4425edfd36f9983ab_styler,
+            ...{
+}
+        });
+
+        function geo_json_412431cfbf64c8b4425edfd36f9983ab_add (data) {
+            geo_json_412431cfbf64c8b4425edfd36f9983ab
+                .addData(data);
+        }
+            geo_json_412431cfbf64c8b4425edfd36f9983ab_add({"features": [{"geometry": {"coordinates": [[[-122.39485162920724, 37.832617716920446], [-122.41308129565687, 37.87047200935546], [-122.45404298435173, 37.87982124750006], [-122.48689170823843, 37.85362526434167], [-122.48689170823843, 37.81161016949922], [-122.45404298435173, 37.78541418634083], [-122.41308129565687, 37.79476342448543], [-122.39485162920724, 37.832617716920446], [-122.39485162920724, 37.832617716920446]]], "type": "Polygon"}, "properties": {"area_km2": 16.837774776425686, "density": 2796.0939390824965, "name": "District 5", "population": 47080}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_412431cfbf64c8b4425edfd36f9983ab.bindTooltip(
+                `<div>
+                     District 5 (Pop: 47,080)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_d32304341325769f660e7c8d48f193a7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7946d581572c7fd01f0978035903152b = $(`<div id="html_7946d581572c7fd01f0978035903152b" style="width: 100.0%; height: 100.0%;">         <div style="width: 200px;">             <h4>🏘️ District 5</h4>             <p><strong>Population:</strong> 47,080</p>             <p><strong>Area:</strong> 16.8 km²</p>             <p><strong>Density:</strong> 2796 people/km²</p>         </div>         </div>`)[0];
+                popup_d32304341325769f660e7c8d48f193a7.setContent(html_7946d581572c7fd01f0978035903152b);
+            
+        
+
+        geo_json_412431cfbf64c8b4425edfd36f9983ab.bindPopup(popup_d32304341325769f660e7c8d48f193a7)
+        ;
+
+        
+    
+    
+            geo_json_412431cfbf64c8b4425edfd36f9983ab.addTo(feature_group_a73f7099cc1eb5bfdc0fab319ef565a2);
+        
+    
+            feature_group_a73f7099cc1eb5bfdc0fab319ef565a2.addTo(map_7e612d41bef4e1be01b4b82843ed6bb7);
+        
+    
+            var feature_group_b99bc4b66b35d5f569982d6cb8465318 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var layer_control_10a48ca9485bfa179e7c67d912753e0f_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_664e54ca699a2f7f92c69de3ec57dbeb,
+                    "Satellite" : tile_layer_04b572f53e47b54157a98153ae6972b7,
+                    "Terrain" : tile_layer_e2639fed80a123e5c340d33d720dc61b,
+                },
+                overlays :  {
+                    "Points of Interest" : feature_group_8c205b4cd08083b00dc40aa39868caed,
+                    "Sensor Network" : feature_group_d0d5d9fd82a276394c2dfe71cfc64a73,
+                    "Administrative Boundaries" : feature_group_a73f7099cc1eb5bfdc0fab319ef565a2,
+                    "Analysis Results" : feature_group_b99bc4b66b35d5f569982d6cb8465318,
+                },
+            };
+            let layer_control_10a48ca9485bfa179e7c67d912753e0f = L.control.layers(
+                layer_control_10a48ca9485bfa179e7c67d912753e0f_layers.base_layers,
+                layer_control_10a48ca9485bfa179e7c67d912753e0f_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_7e612d41bef4e1be01b4b82843ed6bb7);
+
+        
+</script>
+</html>

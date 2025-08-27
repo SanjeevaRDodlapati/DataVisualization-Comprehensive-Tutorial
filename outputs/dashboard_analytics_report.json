@@ -1,0 +1,117 @@
+{
+  "timestamp": "2025-08-27T07:05:19.428234",
+  "summary": {
+    "total_poi": 50,
+    "total_sensors": 30,
+    "total_districts": 5,
+    "alert_sensors": 9,
+    "total_population": 279388
+  },
+  "poi_breakdown": {
+    "Police Station": 13,
+    "Park": 7,
+    "Shopping Center": 6,
+    "Fire Station": 8,
+    "Hospital": 10,
+    "School": 6
+  },
+  "sensor_breakdown": {
+    "Air Quality": 8,
+    "Noise": 4,
+    "Weather": 5,
+    "Traffic": 7,
+    "Water Quality": 6
+  },
+  "alert_details": [
+    {
+      "sensor_id": "sensor_1",
+      "type": "Noise",
+      "value": 70.24117608828396,
+      "threshold": 70,
+      "location": [
+        37.65005543420502,
+        -122.2593721528715
+      ]
+    },
+    {
+      "sensor_id": "sensor_3",
+      "type": "Weather",
+      "value": 25.399871061972217,
+      "threshold": 25,
+      "location": [
+        37.78004240152764,
+        -122.50561958223435
+      ]
+    },
+    {
+      "sensor_id": "sensor_5",
+      "type": "Weather",
+      "value": 29.51704158925069,
+      "threshold": 25,
+      "location": [
+        37.88397483927614,
+        -122.35309872179161
+      ]
+    },
+    {
+      "sensor_id": "sensor_15",
+      "type": "Noise",
+      "value": 82.49132187063253,
+      "threshold": 70,
+      "location": [
+        37.82032146942061,
+        -122.40754546148966
+      ]
+    },
+    {
+      "sensor_id": "sensor_17",
+      "type": "Air Quality",
+      "value": 101.37215711320447,
+      "threshold": 100,
+      "location": [
+        37.81339741827425,
+        -122.38203542618169
+      ]
+    },
+    {
+      "sensor_id": "sensor_21",
+      "type": "Traffic",
+      "value": 73.50710438038858,
+      "threshold": 70,
+      "location": [
+        37.84686799003466,
+        -122.39481603832986
+      ]
+    },
+    {
+      "sensor_id": "sensor_22",
+      "type": "Water Quality",
+      "value": 8.001229503281717,
+      "threshold": 8.0,
+      "location": [
+        37.708580399126234,
+        -122.46421448321576
+      ]
+    },
+    {
+      "sensor_id": "sensor_27",
+      "type": "Weather",
+      "value": 29.0012393410161,
+      "threshold": 25,
+      "location": [
+        37.753216763016916,
+        -122.46844757463266
+      ]
+    },
+    {
+      "sensor_id": "sensor_29",
+      "type": "Air Quality",
+      "value": 143.00529057461972,
+      "threshold": 100,
+      "location": [
+        37.659647780895455,
+        -122.3978545876598
+      ]
+    }
+  ]
+}
